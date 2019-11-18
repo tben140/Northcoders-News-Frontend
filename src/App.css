@@ -17,6 +17,7 @@
 
 .article-list-topic {
   font-style: italic;
+  font-size: 10px;
   text-align: left;
 }
 
@@ -45,5 +46,9 @@
 }
 
 .article-body {
+  text-align: left;
+}
+
+.comments-label {
   text-align: left;
 }
