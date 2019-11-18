@@ -1,8 +1,6 @@
 import React from "react";
-import ArticleCard from "./ArticleCard.js";
-import { Router } from "@reach/router";
 
-class ArticlesList extends React.Component {
+class ArticleCard extends React.Component {
   state = {
     articles: [
       {
@@ -39,106 +37,26 @@ class ArticlesList extends React.Component {
         created_at: "2018-05-06T02:40:35.489Z",
         comment_count: "8"
       }
-    ],
-    comments: [
-      {
-        comment_id: 115,
-        author: "happyamy2016",
-        article_id: 33,
-        votes: 12,
-        created_at: "2018-01-19T14:47:14.514Z",
-        body:
-          "Neque dolor sint illum id consequuntur debitis qui nam eum. Nam adipisci similique consequatur officiis. Totam qui enim at iste dolorem ullam. Tenetur laudantium sed facilis aspernatur occaecati. Provident rerum quia consectetur et. Molestiae eligendi commodi."
-      },
-      {
-        comment_id: 272,
-        author: "tickle122",
-        article_id: 33,
-        votes: 17,
-        created_at: "2017-09-26T21:34:42.072Z",
-        body:
-          "Distinctio excepturi laboriosam eos aperiam quis amet eum animi minima. Officiis in quia. Est consequatur optio atque nostrum iusto impedit harum quod asperiores."
-      },
-      {
-        comment_id: 196,
-        author: "cooljmessy",
-        article_id: 33,
-        votes: 0,
-        created_at: "2017-07-15T21:11:34.498Z",
-        body:
-          "Qui consequuntur id beatae ut vel a error. Vitae et et. Mollitia soluta neque quibusdam tempore quis quia eos autem magni. Voluptatibus numquam nostrum et enim officiis rerum. Optio quo harum dolore voluptatem sit temporibus rem voluptas rem."
-      },
-      {
-        comment_id: 254,
-        author: "weegembump",
-        article_id: 33,
-        votes: 16,
-        created_at: "2017-04-20T19:55:25.295Z",
-        body:
-          "Cupiditate commodi delectus molestiae exercitationem iure eum error et. Et pariatur dolores assumenda explicabo ut ut rem. Magni molestiae veritatis illum."
-      },
-      {
-        comment_id: 253,
-        author: "tickle122",
-        article_id: 33,
-        votes: 3,
-        created_at: "2016-10-10T10:31:10.823Z",
-        body:
-          "Expedita non veritatis dicta blanditiis ratione qui et. Corrupti sapiente accusantium molestiae vel nemo quia ullam. Ut distinctio aut autem fuga ullam et quod vero architecto. Sapiente voluptatem neque."
-      },
-      {
-        comment_id: 154,
-        author: "cooljmessy",
-        article_id: 33,
-        votes: 4,
-        created_at: "2016-02-29T17:25:02.517Z",
-        body:
-          "Dolores qui illo et minima et facilis sunt. Enim velit sunt ut quae est ut."
-      }
     ]
   };
 
   render() {
+    const { article } = this.props;
     return (
-      <Router>
-        <AllArticles path="/" />
-        <CodingArticles path="/coding" />
-        <FootballArticles path="/football" />
-        <CookingArticles path="/cooking" />
-        <NoMatch default />
-      </Router>
+      <article key={article.article_id}>
+        <h2 className="article-list-title">{article.title}</h2>
+        <p className="article-list-topic">Topic: {article.topic}</p>
+        <p className="article-list-createdAt">{article.created_at}</p>
+        <p className="article-list-author">Author: {article.author}</p>
+        <p className="article-list-votes">Votes: {article.votes}</p>
+        <p className="article-list-comment-count">
+          Comments: {article.comment_count}
+        </p>
+        <p className="article-body">{article.body}</p>
+        <br />
+      </article>
     );
   }
 }
 
-const AllArticles = () => (
-  <div>
-    <h2>All Articles</h2>
-  </div>
-);
-
-const CodingArticles = () => (
-  <div>
-    <h2>Coding Articles</h2>
-  </div>
-);
-
-const FootballArticles = () => (
-  <div>
-    <h2>Football Articles</h2>
-  </div>
-);
-
-const CookingArticles = () => (
-  <div>
-    <h2>Cooking Articles</h2>
-  </div>
-);
-
-const NoMatch = () => (
-  <div>
-    <h2>No Match</h2>
-  </div>
-);
-
-export default ArticlesList;
+export default ArticleCard;
