@@ -5,7 +5,7 @@ class Login extends React.Component {
     return (
       <label>
         Users:
-        <select name="users">
+        <select name="users" className="dropdown-box">
           <option value="user1">User 1</option>
           <option value="user2">User 2</option>
           <option value="user3">User 3</option>

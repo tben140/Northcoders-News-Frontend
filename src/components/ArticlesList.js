@@ -1,5 +1,10 @@
 import React from "react";
-import ArticleCard from "./ArticleCard.js";
+import AllArticles from "./AllArticles.js";
+import CodingArticles from "./CodingArticles.js";
+import FootballArticles from "./FootballArticles.js";
+import CookingArticles from "./CookingArticles.js";
+import NoMatch from "./NoMatch.js";
+
 import { Router } from "@reach/router";
 
 class ArticlesList extends React.Component {
@@ -99,6 +104,7 @@ class ArticlesList extends React.Component {
   };
 
   render() {
+    //TODO: Refactor topic routing to use :topics instead
     return (
       <Router>
         <AllArticles path="/" />
@@ -110,35 +116,5 @@ class ArticlesList extends React.Component {
     );
   }
 }
-
-const AllArticles = () => (
-  <div>
-    <h2>All Articles</h2>
-  </div>
-);
-
-const CodingArticles = () => (
-  <div>
-    <h2>Coding Articles</h2>
-  </div>
-);
-
-const FootballArticles = () => (
-  <div>
-    <h2>Football Articles</h2>
-  </div>
-);
-
-const CookingArticles = () => (
-  <div>
-    <h2>Cooking Articles</h2>
-  </div>
-);
-
-const NoMatch = () => (
-  <div>
-    <h2>No Match</h2>
-  </div>
-);
 
 export default ArticlesList;

@@ -1,13 +1,14 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+}
+
+body {
+  background-color: rgb(38, 38, 38);
 }
 
 .App-header {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.App-link {
-  color: #09d3ac;
+  text-align: center;
+  color: white;
 }
 
 /* Article List Styling */
@@ -51,4 +52,99 @@
 
 .comments-label {
   text-align: left;
+}
+
+.dropdown-box {
+}
+
+.article {
+  margin: 20px;
+}
+
+.article-card {
+  display: grid;
+  grid-template-columns: 60px auto;
+  grid-gap: 3px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  margin: 10px;
+  background: rgb(255, 255, 255);
+}
+
+.article-card-header {
+  background-color: transparent;
+}
+
+.votebar {
+  background-color: transparent;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row: 1 / span 2;
+  border-right: 2px solid;
+  justify-items: center;
+}
+
+.votenumber {
+  text-align: center;
+}
+
+.votebutton {
+  margin: auto;
+}
+
+.avatar-username-topic {
+  background-color: transparent;
+  grid-column-start: 2;
+  grid-column-end: 2;
+}
+
+.date-title {
+  background-color: rgb(255, 255, 255);
+  grid-column-start: 2;
+  grid-column-end: 2;
+}
+
+.article-footer {
+  background-color: transparent;
+  grid-column-start: 2;
+  grid-column-end: 2;
+}
+
+.article-footer-comments {
+  font-size: 12px;
+}
+
+.article-card-header-username {
+  background-color: transparent;
+  font-size: 12px;
+  margin: 0px;
+}
+
+.article-card-header-topic {
+  background-color: transparent;
+  font-size: 12px;
+  margin: 7px;
+}
+
+.avatar-img {
+  float: left;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.date-title-date {
+  font-style: italic;
+  font-size: 12px;
+  margin: 0px;
+}
+
+.date-title-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0px;
+}
+
+.topic-title {
+  text-align: center;
+  color: white;
 }
