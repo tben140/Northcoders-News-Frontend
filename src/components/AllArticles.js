@@ -20,7 +20,7 @@ class AllArticles extends React.Component {
       <div>
         <h2 className="topic-title">All Articles</h2>
         {this.state.articles.map(article => {
-          return <ArticleCard data={article} />;
+          return <ArticleCard data={article} key={article.article_id} />;
         })}
       </div>
     );

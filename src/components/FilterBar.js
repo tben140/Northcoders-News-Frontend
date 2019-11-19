@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 
 const FilterBar = props => {
   return (
-    <nav>
+    <nav className="filterbar">
       <Link to="/">
         <button>All Articles</button>
       </Link>

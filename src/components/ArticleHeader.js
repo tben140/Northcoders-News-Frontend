@@ -12,22 +12,22 @@ class ArticleHeader extends React.Component {
 
   render() {
     const { data } = this.props;
+    const date = new Date(data.created_at);
+    const dateStr = date.toString();
     return (
       <section className="article-card-header">
         <section className="avatar-username-topic">
           <img
             src={this.state.avatar_url}
             alt="Avatar"
-            width="40"
-            height="40"
             className="avatar-img"
           ></img>
-          <p className="article-card-header-username">{data.author}</p>
-          <p className="article-card-header-topic">{data.topic}</p>
+          <p className="article-card-header-username">Author: {data.author}</p>
+          <p className="article-card-header-topic">Topic: {data.topic}</p>
         </section>
         <section className="date-title">
           <p className="date-title-title">{data.title}</p>
-          <p className="date-title-date">{data.created_at}</p>
+          <p className="date-title-date">{dateStr}</p>
         </section>
       </section>
     );

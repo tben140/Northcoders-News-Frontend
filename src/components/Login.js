@@ -3,6 +3,7 @@ import React from "react";
 class Login extends React.Component {
   render() {
     return (
+      //TODO: Get the label to move with the dropdown box
       <label>
         Users:
         <select name="users" className="dropdown-box">

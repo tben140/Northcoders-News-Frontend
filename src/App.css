@@ -55,6 +55,9 @@ body {
 }
 
 .dropdown-box {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .article {
@@ -69,6 +72,7 @@ body {
   border-radius: 8px;
   margin: 10px;
   background: rgb(255, 255, 255);
+  box-shadow: 5px 5px #3e3e3e;
 }
 
 .article-card-header {
@@ -76,11 +80,12 @@ body {
 }
 
 .votebar {
-  background-color: transparent;
+  background-color: rgb(247, 247, 247);
+  border-radius: 8px 0px 0px 8px;
   grid-column-start: 1;
   grid-column-end: 1;
-  grid-row: 1 / span 2;
-  border-right: 2px solid;
+  grid-row: 1 / span 3;
+  /* border-right: 1px solid; */
   justify-items: center;
 }
 
@@ -116,13 +121,15 @@ body {
 
 .article-card-header-username {
   background-color: transparent;
-  font-size: 12px;
-  margin: 0px;
+  font-size: 11px;
+  font-weight: bold;
+  margin-top: 0px;
 }
 
 .article-card-header-topic {
   background-color: transparent;
-  font-size: 12px;
+  font-weight: bold;
+  font-size: 11px;
   margin: 7px;
 }
 
@@ -130,6 +137,9 @@ body {
   float: left;
   border: 1px solid;
   border-radius: 5px;
+  margin-right: 5px;
+  width: 35px;
+  height: 35px;
 }
 
 .date-title-date {
@@ -147,4 +157,12 @@ body {
 .topic-title {
   text-align: center;
   color: white;
+}
+
+.article-card-body {
+  grid-column-start: 2;
+  font-size: 12px;
+}
+
+.filterbar {
 }
