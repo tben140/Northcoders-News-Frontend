@@ -16,7 +16,6 @@ class ArticleCard extends React.Component {
         <section className="article-card">
           <Votebar votes={data.votes} />
           <ArticleHeader data={data} />
-          <ArticleBody body={data.body} />
           <ArticleFooter commentCount={data.comment_count} />
         </section>
       </>

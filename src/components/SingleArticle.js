@@ -1,5 +1,7 @@
 import React from "react";
 import * as api from "../api.js";
+import Votebar from "./Votebar.js";
+import ArticleHeader from "./ArticleHeader.js";
 
 class SingleArticle extends React.Component {
   state = { isLoading: true };
@@ -26,22 +28,18 @@ class SingleArticle extends React.Component {
     ) : (
       <>
         <section className="single-article-container">
-          <h2>{article.title}</h2>
-          <p>{article.created_at}</p>
-          <p>Author: {article.author}</p>
-          <p>Topic: {article.topic}</p>
-          <p>Comment Count: {article.comment_count}</p>
+          <Votebar votes={article.votes} />
+          <ArticleHeader data={article} />
           <p>Votes: {article.votes}</p>
-          <p>{article.body}</p>
+          <p className="single-article-body">{article.body}</p>
         </section>
         <section className="comments-container">
-          <h3>Comments</h3>
+          <h3>{article.comment_count} comments:</h3>
           {this.state.comments.map(comment => {
             return (
               <section className="comment-container" key={comment.comment_id}>
-                <p>{comment.author}</p>
-                <p>{comment.created_at}</p>
-                <p>{comment.votes}</p>
+                <p>Author: {comment.author}</p>
+                <p>Created At: {comment.created_at}</p>
                 <p>{comment.body}</p>
               </section>
             );

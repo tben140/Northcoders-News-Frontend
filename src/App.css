@@ -169,14 +169,30 @@ body {
 }
 
 .single-article-container {
+  display: grid;
+  grid-template-columns: 60px auto;
+  grid-gap: 3px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  margin: 10px;
+  background-image: linear-gradient(white, rgb(240, 240, 240));
+  box-shadow: 5px 3px 5px #545454;
   background-color: white;
 }
 .comments-container {
   background-color: white;
+  border-radius: 4px;
+  margin: 10px;
 }
 
 .comment-container {
   background-color: white;
   border: 1px solid black;
-  margin: 5px;
+  border-radius: 4px;
+  margin: 10px;
+}
+
+.single-article-body {
+  grid-column-start: 2;
+  grid-column-end: 2;
 }
