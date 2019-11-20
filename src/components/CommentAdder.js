@@ -6,8 +6,12 @@ class CommentAdder extends React.Component {
   render() {
     return (
       <section>
-        <p>Comment Adder:</p>
-        <form></form>
+        <p>Add a comment:</p>
+        <form>
+          <textarea name="Text1" cols="100" rows="3"></textarea>
+          <br />
+          <input type="submit" value="Submit"></input>
+        </form>
       </section>
     );
   }

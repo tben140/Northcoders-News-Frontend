@@ -17,19 +17,22 @@ class FilterBar extends React.Component {
     return this.state.isLoading ? (
       <p>Loading...</p>
     ) : (
-      <nav className="filterbar">
-        <Link to="/">
-          <button>All Articles</button>
-        </Link>
+      <>
+        <nav className="filterbar">
+          <Link to="/">
+            <button>All Articles</button>
+          </Link>
 
-        {topics.topics.map(topic => {
-          return (
-            <Link to={`/${topic.slug}`} key={topic.slug}>
-              <button>{`${topic.slug} articles`}</button>
-            </Link>
-          );
-        })}
-      </nav>
+          {topics.topics.map(topic => {
+            return (
+              <Link to={`/${topic.slug}`} key={topic.slug}>
+                <button>{`${topic.slug} articles`}</button>
+              </Link>
+            );
+          })}
+        </nav>
+        <br />
+      </>
     );
   }
 }

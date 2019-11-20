@@ -1,16 +1,33 @@
 import React from "react";
 
 class Login extends React.Component {
+  state = {
+    username: [
+      "tickle122",
+      "grumpy19",
+      "happyamy2016",
+      "cooljmessy",
+      "weegembump",
+      "jessjelly"
+    ]
+  };
+
+  componentDidMount() {}
+
   render() {
+    const { username } = this.state;
     return (
       //TODO: Get the label to move with the dropdown box
-      <label>
+      <label className="dropdown-box">
         Users:
-        <select name="users" className="dropdown-box">
-          <option value="user1">User 1</option>
-          <option value="user2">User 2</option>
-          <option value="user3">User 3</option>
-          <option value="user4">User 4</option>
+        <select name="users">
+          {username.map(user => {
+            return (
+              <option value={user} key={user}>
+                {user}
+              </option>
+            );
+          })}
         </select>
         <br />
         <br />

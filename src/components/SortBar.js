@@ -6,16 +6,16 @@ class SortBar extends React.Component {
   render() {
     return (
       <>
-        <label>
+        <label className="sort-articles-by">
           Sort By:
-          <select name="SortArticlesBy">
+          <select>
             <option value="created_at">Date Created</option>
             <option value="votes">Votes</option>
             <option value="comment_count">Comment Count</option>
           </select>
         </label>
         <br />
-        <label>
+        <label className="sort-articles-by">
           Order:
           <select>
             <option value="asc">Ascending</option>
