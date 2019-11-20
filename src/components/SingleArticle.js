@@ -22,9 +22,7 @@ class SingleArticle extends React.Component {
     });
   }
   render() {
-    const { article, comments } = this.state;
-    console.log("article", article);
-    console.log("Comments ->", comments);
+    const { article } = this.state;
     return this.state.isLoading ? (
       <p>Loading...</p>
     ) : (
@@ -36,10 +34,10 @@ class SingleArticle extends React.Component {
           <p className="single-article-body">{article.body}</p>
         </section>
         <section className="comments-container">
-          <CommentAdder />
+          <CommentAdder articleId={article.article_id} />
           <h3>{article.comment_count} comments:</h3>
           {this.state.comments.map(comment => {
-            return <CommentCard comment={comment} />;
+            return <CommentCard comment={comment} key={comment.comment_id} />;
           })}
         </section>
       </>

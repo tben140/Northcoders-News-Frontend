@@ -220,3 +220,8 @@ body {
   justify-content: center;
   color: white;
 }
+
+.all-articles-container {
+  display: grid;
+  grid-template-columns: auto 300px;
+}

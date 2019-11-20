@@ -1,5 +1,6 @@
 import React from "react";
 import ArticleCard from "./ArticleCard.js";
+import SortBar from "./SortBar.js";
 import * as api from "../api.js";
 
 class ArticlesList extends React.Component {
@@ -29,6 +30,7 @@ class ArticlesList extends React.Component {
     ) : (
       <div>
         <h2 className="topic-title">{`${this.props.slug}`} Articles</h2>
+        <SortBar />
         {this.state.articles.map(article => {
           return <ArticleCard data={article} key={article.article_id} />;
         })}

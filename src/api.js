@@ -25,3 +25,10 @@ export const getCommentsByArticleId = article_id => {
     `https://bt-nc-news.herokuapp.com/api/articles/${article_id}/comments`
   );
 };
+
+export const postCommentToArticle = (username, body, article_id) => {
+  return axios.post(
+    `https://bt-nc-news.herokuapp.com/api/articles/${article_id}/comments`,
+    { username: username, body: body }
+  );
+};

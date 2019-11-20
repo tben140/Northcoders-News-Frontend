@@ -8,7 +8,6 @@ import SingleArticle from "./components/SingleArticle.js";
 import NoMatch from "./components/NoMatch.js";
 import Login from "./components/Login.js";
 import FilterBar from "./components/FilterBar.js";
-import SortBar from "./components/SortBar.js";
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
       <Header />
       <Login />
       <FilterBar />
-      <SortBar />
       <Router>
         <AllArticles path="/" />
         <ArticlesList path="/:slug" />
