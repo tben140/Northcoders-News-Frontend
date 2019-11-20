@@ -1,9 +1,29 @@
-import React from 'react';
+import React from "react";
+import ArticleCard from "./ArticleCard.js";
+import * as api from "../api.js";
 
-const CodingArticles = () => (
-  <div>
-    <h2>Coding Articles</h2>
-  </div>
-);
+class CodingArticles extends React.Component {
+  state = { isLoading: true };
 
+  componentDidMount() {
+    api
+      .getArticles("coding")
+      .then(({ data: { articles } }) =>
+        this.setState({ articles, isLoading: false })
+      );
+  }
+
+  render() {
+    return this.state.isLoading ? (
+      <p>Loading...</p>
+    ) : (
+      <div>
+        <h2 className="topic-title">Coding Articles</h2>
+        {this.state.articles.map(article => {
+          return <ArticleCard data={article} key={article.article_id} />;
+        })}
+      </div>
+    );
+  }
+}
 export default CodingArticles;

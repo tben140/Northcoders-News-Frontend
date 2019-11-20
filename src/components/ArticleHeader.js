@@ -1,4 +1,5 @@
 import React from "react";
+import * as api from "../api.js";
 
 class ArticleHeader extends React.Component {
   state = {
@@ -10,10 +11,24 @@ class ArticleHeader extends React.Component {
     votes: 10
   };
 
+  componentDidMount() {
+    const { data } = this.props;
+    api.getUserData(data.author).then(
+      ({
+        data: {
+          user: { avatar_url }
+        }
+      }) => {
+        this.setState({ avatar_url: avatar_url });
+      }
+    );
+  }
+
   render() {
     const { data } = this.props;
     const date = new Date(data.created_at);
     const dateStr = date.toString();
+
     return (
       <section className="article-card-header">
         <section className="avatar-username-topic">
