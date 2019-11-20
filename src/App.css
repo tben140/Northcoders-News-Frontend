@@ -191,10 +191,18 @@ body {
 }
 
 .comment-container {
-  background-color: white;
+  display: grid;
+  grid-template-columns: 60px auto;
+  background-image: linear-gradient(white, rgb(240, 240, 240));
+  box-shadow: 5px 3px 5px #545454;
   border: 1px solid black;
   border-radius: 4px;
   margin: 10px;
+}
+
+.comment-card-body {
+  grid-column-start: 2;
+  font-size: 12px;
 }
 
 .single-article-body {

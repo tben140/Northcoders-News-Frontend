@@ -3,6 +3,7 @@ import * as api from "../api.js";
 import Votebar from "./Votebar.js";
 import ArticleHeader from "./ArticleHeader.js";
 import CommentAdder from "./CommentAdder.js";
+import CommentCard from "./CommentCard.js";
 
 class SingleArticle extends React.Component {
   state = { isLoading: true };
@@ -38,13 +39,7 @@ class SingleArticle extends React.Component {
           <CommentAdder />
           <h3>{article.comment_count} comments:</h3>
           {this.state.comments.map(comment => {
-            return (
-              <section className="comment-container" key={comment.comment_id}>
-                <p>Author: {comment.author}</p>
-                <p>Created At: {comment.created_at}</p>
-                <p>{comment.body}</p>
-              </section>
-            );
+            return <CommentCard comment={comment} />;
           })}
         </section>
       </>
