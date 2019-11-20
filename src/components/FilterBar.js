@@ -24,7 +24,7 @@ class FilterBar extends React.Component {
 
         {topics.topics.map(topic => {
           return (
-            <Link to={`/${topic.slug}`}>
+            <Link to={`/${topic.slug}`} key={topic.slug}>
               <button>{`${topic.slug} articles`}</button>
             </Link>
           );

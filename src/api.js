@@ -13,3 +13,9 @@ export const getAllTopics = () => {
 export const getUserData = username => {
   return axios.get(`https://bt-nc-news.herokuapp.com/api/users/${username}`);
 };
+
+export const getArticleDetails = article_id => {
+  return axios.get(
+    `https://bt-nc-news.herokuapp.com/api/articles/${article_id}`
+  );
+};
