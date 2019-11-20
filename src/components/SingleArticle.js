@@ -5,15 +5,22 @@ class SingleArticle extends React.Component {
   state = { isLoading: true };
 
   componentDidMount() {
-    api
+    const fetchArticleDetails = api
       .getArticleDetails(this.props.article_id)
-      .then(({ data: { article } }) =>
-        this.setState({ article, isLoading: false })
-      );
+      .then(({ data: { article } }) => this.setState({ article }));
+
+    const fetchCommentsByArticleId = api
+      .getCommentsByArticleId(this.props.article_id)
+      .then(({ data: { comments } }) => this.setState({ comments }));
+
+    Promise.all([fetchArticleDetails, fetchCommentsByArticleId]).then(() => {
+      this.setState({ isLoading: false });
+    });
   }
   render() {
-    const { article } = this.state;
+    const { article, comments } = this.state;
     console.log("article", article);
+    console.log("Comments ->", comments);
     return this.state.isLoading ? (
       <p>Loading...</p>
     ) : (
@@ -28,7 +35,17 @@ class SingleArticle extends React.Component {
           <p>{article.body}</p>
         </section>
         <section className="comments-container">
-          <h2>Comments section</h2>
+          <h3>Comments</h3>
+          {this.state.comments.map(comment => {
+            return (
+              <section className="comment-container" key={comment.comment_id}>
+                <p>{comment.author}</p>
+                <p>{comment.created_at}</p>
+                <p>{comment.votes}</p>
+                <p>{comment.body}</p>
+              </section>
+            );
+          })}
         </section>
       </>
     );

@@ -19,3 +19,9 @@ export const getArticleDetails = article_id => {
     `https://bt-nc-news.herokuapp.com/api/articles/${article_id}`
   );
 };
+
+export const getCommentsByArticleId = article_id => {
+  return axios.get(
+    `https://bt-nc-news.herokuapp.com/api/articles/${article_id}/comments`
+  );
+};

@@ -174,3 +174,9 @@ body {
 .comments-container {
   background-color: white;
 }
+
+.comment-container {
+  background-color: white;
+  border: 1px solid black;
+  margin: 5px;
+}
