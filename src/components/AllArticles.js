@@ -33,7 +33,7 @@ class AllArticles extends React.Component {
             return <ArticleCard data={article} key={article.article_id} />;
           })}
         </section>
-        <aside>
+        <aside className="sidebar">
           <Login />
           <FilterBar />
         </aside>

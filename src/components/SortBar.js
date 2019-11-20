@@ -13,7 +13,7 @@ class SortBar extends React.Component {
 
   render() {
     return (
-      <>
+      <section className="sort-dropdown-container">
         <label className="sort-articles-by">
           Sort By:
           <select onChange={event => this.handleSortChange(event.target.value)}>
@@ -22,7 +22,6 @@ class SortBar extends React.Component {
             <option value="comment_count">Comment Count</option>
           </select>
         </label>
-        <br />
         <label className="sort-articles-by">
           Order:
           <select
@@ -32,7 +31,7 @@ class SortBar extends React.Component {
             <option value="desc">Descending</option>
           </select>
         </label>
-      </>
+      </section>
     );
   }
 }

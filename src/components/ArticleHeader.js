@@ -1,5 +1,6 @@
 import React from "react";
 import * as api from "../api.js";
+import { Link } from "@reach/router";
 
 class ArticleHeader extends React.Component {
   state = {
@@ -41,7 +42,7 @@ class ArticleHeader extends React.Component {
           <p className="article-card-header-topic">Topic: {data.topic}</p>
         </section>
         <section className="date-title">
-          <p className="date-title-title">{data.title}</p>
+          <Link to={`/articles/${data.article_id}`}>{data.title}</Link>
           <p className="date-title-date">{dateStr}</p>
         </section>
       </section>

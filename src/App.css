@@ -9,6 +9,7 @@ body {
 .App-header {
   text-align: center;
   color: white;
+  font-family: "Odibee Sans", cursive;
 }
 
 /* Article List Styling */
@@ -162,6 +163,7 @@ body {
 }
 
 .topic-title {
+  font-family: "Odibee Sans", cursive;
   text-align: center;
   color: white;
 }
@@ -224,4 +226,25 @@ body {
 .all-articles-container {
   display: grid;
   grid-template-columns: auto 300px;
+}
+
+@media only screen and (max-width: 900px) {
+  body {
+    background-color: lightblue;
+  }
+}
+
+.sort-dropdown-container {
+}
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: RoyalBlue;
 }

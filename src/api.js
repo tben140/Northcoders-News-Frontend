@@ -32,3 +32,9 @@ export const postCommentToArticle = (username, body, article_id) => {
     { username: username, body: body }
   );
 };
+
+export const deleteComment = comment_id => {
+  return axios.delete(
+    `https://bt-nc-news.herokuapp.com/api/comments/${comment_id}`
+  );
+};

@@ -20,13 +20,13 @@ class FilterBar extends React.Component {
       <>
         <nav className="filterbar">
           <Link to="/">
-            <button>All Articles</button>
+            <button className="btn">All Articles</button>
           </Link>
 
           {topics.topics.map(topic => {
             return (
               <Link to={`/${topic.slug}`} key={topic.slug}>
-                <button>{`${topic.slug} articles`}</button>
+                <button className="btn">{`${topic.slug} articles`}</button>
               </Link>
             );
           })}
