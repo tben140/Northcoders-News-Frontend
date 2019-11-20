@@ -1,7 +1,6 @@
 import React from "react";
 import Votebar from "./Votebar.js";
 import ArticleHeader from "./ArticleHeader.js";
-import ArticleBody from "./ArticleBody.js";
 import ArticleFooter from "./ArticleFooter.js";
 
 class ArticleCard extends React.Component {

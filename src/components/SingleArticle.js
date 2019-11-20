@@ -2,6 +2,7 @@ import React from "react";
 import * as api from "../api.js";
 import Votebar from "./Votebar.js";
 import ArticleHeader from "./ArticleHeader.js";
+import CommentAdder from "./CommentAdder.js";
 
 class SingleArticle extends React.Component {
   state = { isLoading: true };
@@ -34,6 +35,7 @@ class SingleArticle extends React.Component {
           <p className="single-article-body">{article.body}</p>
         </section>
         <section className="comments-container">
+          <CommentAdder />
           <h3>{article.comment_count} comments:</h3>
           {this.state.comments.map(comment => {
             return (
