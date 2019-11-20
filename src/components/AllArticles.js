@@ -2,12 +2,14 @@ import React from "react";
 import ArticleCard from "./ArticleCard.js";
 import * as api from "../api.js";
 
+//TODO: Get rid of this file once ArticlesList can display all articles
+
 class AllArticles extends React.Component {
   state = { isLoading: true };
 
   componentDidMount() {
     api
-      .getAllArticles()
+      .getArticles()
       .then(({ data: { articles } }) =>
         this.setState({ articles, isLoading: false })
       );

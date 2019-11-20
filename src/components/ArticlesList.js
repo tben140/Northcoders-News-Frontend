@@ -2,15 +2,25 @@ import React from "react";
 import ArticleCard from "./ArticleCard.js";
 import * as api from "../api.js";
 
-class CodingArticles extends React.Component {
+class ArticlesList extends React.Component {
   state = { isLoading: true };
 
   componentDidMount() {
     api
-      .getArticles("coding")
+      .getArticles(this.props.slug)
       .then(({ data: { articles } }) =>
         this.setState({ articles, isLoading: false })
       );
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.slug !== this.props.slug) {
+      api
+        .getArticles(this.props.slug)
+        .then(({ data: { articles } }) =>
+          this.setState({ articles, isLoading: false })
+        );
+    }
   }
 
   render() {
@@ -18,7 +28,7 @@ class CodingArticles extends React.Component {
       <p>Loading...</p>
     ) : (
       <div>
-        <h2 className="topic-title">Coding Articles</h2>
+        <h2 className="topic-title">{`${this.props.slug}`} Articles</h2>
         {this.state.articles.map(article => {
           return <ArticleCard data={article} key={article.article_id} />;
         })}
@@ -26,4 +36,5 @@ class CodingArticles extends React.Component {
     );
   }
 }
-export default CodingArticles;
+
+export default ArticlesList;

@@ -12,8 +12,7 @@ class FilterBar extends React.Component {
   }
 
   render() {
-    //TODO: Properly destructure topics from axios response
-    const { topics: topics } = this.state;
+    const { topics } = this.state;
 
     return this.state.isLoading ? (
       <p>Loading...</p>
@@ -23,23 +22,13 @@ class FilterBar extends React.Component {
           <button>All Articles</button>
         </Link>
 
-        {this.state.topics.topics.map(topic => {
+        {topics.topics.map(topic => {
           return (
             <Link to={`/${topic.slug}`}>
               <button>{`${topic.slug} articles`}</button>
             </Link>
           );
         })}
-
-        {/* <Link to="/coding">
-          <button>Coding Articles</button>
-        </Link>
-        <Link to="/football">
-          <button>Football Articles</button>
-        </Link>
-        <Link to="/cooking">
-          <button>Cooking Articles</button>
-        </Link> */}
       </nav>
     );
   }

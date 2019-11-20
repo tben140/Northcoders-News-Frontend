@@ -1,9 +1,5 @@
 import axios from "axios";
 
-export const getAllArticles = () => {
-  return axios.get("https://bt-nc-news.herokuapp.com/api/articles/");
-};
-
 export const getArticles = topic => {
   return axios.get("https://bt-nc-news.herokuapp.com/api/articles", {
     params: { topic: topic }
