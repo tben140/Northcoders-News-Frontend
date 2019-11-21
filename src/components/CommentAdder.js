@@ -14,7 +14,7 @@ class CommentAdder extends React.Component {
     e.preventDefault();
     const { comment_body } = this.state;
     const { articleId } = this.props;
-    //TODO: Make user change in API call depending on dropdown selection and rerender when comment is posted
+    //TODO: rerender when comment is posted
     api.postCommentToArticle("jessjelly", comment_body, articleId);
   };
 
@@ -22,22 +22,26 @@ class CommentAdder extends React.Component {
     return (
       <section>
         <br />
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Add a comment:
+        {this.props.currentUser === "jessjelly" ? (
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Add a comment:
+              <br />
+              <textarea
+                name="Text1"
+                placeholder="Add a comment..."
+                className="add-comment-textarea"
+                cols="100"
+                rows="3"
+                onChange={this.handleChange}
+              ></textarea>
+            </label>
             <br />
-            <textarea
-              name="Text1"
-              placeholder="Add a comment..."
-              className="add-comment-textarea"
-              cols="100"
-              rows="3"
-              onChange={this.handleChange}
-            ></textarea>
-          </label>
-          <br />
-          <input type="submit" value="Submit"></input>
-        </form>
+            <input type="submit" value="Submit"></input>
+          </form>
+        ) : (
+          <p>You cannot create a comment</p>
+        )}
       </section>
     );
   }
