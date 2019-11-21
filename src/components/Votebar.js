@@ -6,6 +6,7 @@ class Votebar extends React.Component {
   render() {
     const { votes } = this.props;
     //TODO: Set state for votes and reseed production DB with correct votes for articles
+    //TODO: Add conditional CSS to change color if votecount is negative
     return (
       <section className="votebar">
         <button type="button" className="votebutton">

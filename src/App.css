@@ -8,8 +8,16 @@ body {
 
 .App-header {
   text-align: center;
+  background-color: DodgerBlue;
   color: white;
   font-family: "Odibee Sans", cursive;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.header-title {
+  margin: 0;
 }
 
 /* Article List Styling */
@@ -60,6 +68,7 @@ body {
   flex-direction: row;
   justify-content: center;
   color: white;
+  margin-top: 80px;
 }
 
 .article {
@@ -82,12 +91,12 @@ body {
 }
 
 .votebar {
-  background-color: rgb(247, 247, 247);
+  background-color: rgb(106, 228, 120);
   border-radius: 4px 0px 0px 4px;
   grid-column-start: 1;
   grid-column-end: 1;
   grid-row: 1 / span 3;
-  /* border-right: 1px solid; */
+  border-right: 1px solid;
   justify-items: center;
 }
 
@@ -102,6 +111,13 @@ body {
 
 .votebutton {
   margin: auto;
+  background-color: DodgerBlue;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  text-transform: capitalize;
 }
 
 .avatar-username-topic {
@@ -164,6 +180,7 @@ body {
 
 .topic-title {
   font-family: "Odibee Sans", cursive;
+  text-transform: capitalize;
   text-align: center;
   color: white;
 }
@@ -232,6 +249,10 @@ body {
   body {
     background-color: lightblue;
   }
+
+  .filterbar {
+    display: none;
+  }
 }
 
 .sort-dropdown-container {
@@ -239,12 +260,19 @@ body {
 .btn {
   background-color: DodgerBlue;
   border: none;
+  border-radius: 4px;
+  margin: 5px;
   color: white;
   padding: 12px 16px;
   font-size: 12px;
   cursor: pointer;
+  text-transform: capitalize;
 }
 
 .btn:hover {
   background-color: RoyalBlue;
+}
+
+.add-comment-textarea {
+  resize: none;
 }

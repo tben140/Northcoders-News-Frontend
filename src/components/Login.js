@@ -19,7 +19,7 @@ class Login extends React.Component {
     return (
       //TODO: Get the label to move with the dropdown box
       <label className="dropdown-box">
-        Users:
+        Users:&nbsp;
         <select name="users">
           {username.map(user => {
             return (

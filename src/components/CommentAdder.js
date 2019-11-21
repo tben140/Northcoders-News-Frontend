@@ -24,9 +24,12 @@ class CommentAdder extends React.Component {
         <br />
         <form onSubmit={this.handleSubmit}>
           <label>
-            Add a comment:&nbsp;
+            Add a comment:
+            <br />
             <textarea
               name="Text1"
+              placeholder="Add a comment..."
+              className="add-comment-textarea"
               cols="100"
               rows="3"
               onChange={this.handleChange}
