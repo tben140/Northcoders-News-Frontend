@@ -25,6 +25,7 @@ class ArticlesList extends React.Component {
   }
 
   render() {
+    console.log("this.handleSortAndOrder ->", this.handleSortAndOrder);
     return this.state.isLoading ? (
       <p>Loading...</p>
     ) : (

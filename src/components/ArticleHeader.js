@@ -27,7 +27,6 @@ class ArticleHeader extends React.Component {
 
   render() {
     const { data } = this.props;
-    console.log("created_at ->", data.created_at);
     const date = new Date(data.created_at);
     const dateStr = date.toString();
 

@@ -20,6 +20,16 @@ class AllArticles extends React.Component {
 
   componentDidUpdate() {}
 
+  handleSortAndOrder = (sortBy, order) => {
+    console.log("Sortby and Order ->", sortBy, order);
+    const articlesArr = this.state.articles;
+    if (sortBy === "comment_count" && order === "asc") {
+      console.log("Condition Met");
+      articlesArr.sort((a, b) => a.comment_count - b.comment_count);
+      this.setState({ articles: articlesArr });
+    }
+  };
+
   render() {
     return this.state.isLoading ? (
       <p>Loading...</p>
@@ -28,7 +38,7 @@ class AllArticles extends React.Component {
       <section className="all-articles-container">
         <section>
           <h2 className="topic-title">All Articles</h2>
-          <SortBar />
+          <SortBar handleSortAndOrder={this.handleSortAndOrder} />
           {this.state.articles.map(article => {
             return <ArticleCard data={article} key={article.article_id} />;
           })}

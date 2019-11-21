@@ -1,14 +1,25 @@
 import React from "react";
 
 class SortBar extends React.Component {
-  state = { selectedSort: "created_at", selectedOrder: "desc" };
+  state = { selectedSort: "created_at", selectedOrder: "asc" };
 
   handleSortChange = event => {
-    this.setState({ selectedSort: event });
+    this.setState({ selectedSort: event }, () => {
+      this.setSortandOrder();
+    });
   };
 
   handleOrderChange = event => {
-    this.setState({ selectedOrder: event });
+    this.setState({ selectedOrder: event }, () => {
+      this.setSortandOrder();
+    });
+  };
+
+  setSortandOrder = () => {
+    this.props.handleSortAndOrder(
+      this.state.selectedSort,
+      this.state.selectedOrder
+    );
   };
 
   render() {
