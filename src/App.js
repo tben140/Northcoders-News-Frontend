@@ -9,20 +9,27 @@ import NoMatch from "./components/NoMatch.js";
 import Login from "./components/Login.js";
 import FilterBar from "./components/FilterBar.js";
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Login />
-      <FilterBar />
-      <Router>
-        <AllArticles path="/" />
-        <ArticlesList path="/:slug" />
-        <SingleArticle path="/articles/:article_id" />
-        <NoMatch default />
-      </Router>
-    </div>
-  );
+class App extends React.Component {
+  state = { currentUser: "jessjelly" };
+
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <Login />
+        <FilterBar />
+        <Router>
+          <AllArticles path="/" />
+          <ArticlesList path="/:slug" />
+          <SingleArticle
+            path="/articles/:article_id"
+            currentUser={this.state.currentUser}
+          />
+          <NoMatch default />
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;

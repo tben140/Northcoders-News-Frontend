@@ -21,11 +21,30 @@ class AllArticles extends React.Component {
   componentDidUpdate() {}
 
   handleSortAndOrder = (sortBy, order) => {
+    //TODO: Recreate this function as util function with TDD and move to articlesList.js
     console.log("Sortby and Order ->", sortBy, order);
     const articlesArr = this.state.articles;
     if (sortBy === "comment_count" && order === "asc") {
-      console.log("Condition Met");
       articlesArr.sort((a, b) => a.comment_count - b.comment_count);
+      this.setState({ articles: articlesArr });
+    } else if (sortBy === "comment_count" && order === "desc") {
+      articlesArr.sort((a, b) => b.comment_count - a.comment_count);
+      this.setState({ articles: articlesArr });
+    } else if (sortBy === "created_at" && order === "asc") {
+      articlesArr.sort(
+        (a, b) => new Date(a.created_at) - new Date(b.created_at)
+      );
+      this.setState({ articles: articlesArr });
+    } else if (sortBy === "created_at" && order === "desc") {
+      articlesArr.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      );
+      this.setState({ articles: articlesArr });
+    } else if (sortBy === "votes" && order === "asc") {
+      articlesArr.sort((a, b) => a.votes - b.votes);
+      this.setState({ articles: articlesArr });
+    } else if (sortBy === "votes" && order === "desc") {
+      articlesArr.sort((a, b) => b.votes - a.votes);
       this.setState({ articles: articlesArr });
     }
   };

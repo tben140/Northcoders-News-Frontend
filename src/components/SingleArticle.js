@@ -37,7 +37,13 @@ class SingleArticle extends React.Component {
           <CommentAdder articleId={article.article_id} />
           <h3>{article.comment_count} comments:</h3>
           {this.state.comments.map(comment => {
-            return <CommentCard comment={comment} key={comment.comment_id} />;
+            return (
+              <CommentCard
+                comment={comment}
+                key={comment.comment_id}
+                currentUser={this.props.currentUser}
+              />
+            );
           })}
         </section>
       </>

@@ -1,19 +1,82 @@
 import React from "react";
+import * as api from "../api.js";
 
 class Votebar extends React.Component {
-  state = { votes: 10 };
+  state = { votes: 0 };
+
+  handleIncrementVote = () => {
+    const { articleId, commentId } = this.props;
+    if (articleId) {
+      api.patchArticleVote(articleId, 1);
+      this.setState(prevState => {
+        return { votes: prevState.votes + 1 };
+      });
+    } else if (commentId) {
+      api.patchCommentVote(commentId, 1);
+      this.setState(prevState => {
+        return { votes: prevState.votes + 1 };
+      });
+    }
+  };
+
+  handleDecrementVote = () => {
+    const { articleId, commentId } = this.props;
+    if (articleId) {
+      api.patchArticleVote(articleId, -1);
+      this.setState(prevState => {
+        return { votes: prevState.votes - 1 };
+      });
+    } else if (commentId) {
+      api.patchCommentVote(commentId, -1);
+      this.setState(prevState => {
+        return { votes: prevState.votes - 1 };
+      });
+    }
+  };
+
+  componentDidMount() {
+    const { articleId, commentId } = this.props;
+    if (articleId && commentId === undefined) {
+      api.getArticleDetails(articleId).then(
+        ({
+          data: {
+            article: { votes }
+          }
+        }) => {
+          this.setState({ votes });
+        }
+      );
+      // } else if (articleId && commentId) {
+      //   api.getArticleDetails(articleId).then(api.get).then(
+      //     ({
+      //       data: {
+      //         article: { votes }
+      //       }
+      //     }) => {
+      //       this.setState({ votes });
+      //     }
+      //   );
+      // }
+    }
+  }
 
   render() {
-    const { votes } = this.props;
-    //TODO: Set state for votes and reseed production DB with correct votes for articles
     //TODO: Add conditional CSS to change color if votecount is negative
     return (
       <section className="votebar">
-        <button type="button" className="votebutton">
+        <button
+          type="button"
+          className="votebutton"
+          onClick={() => this.handleIncrementVote()}
+        >
           Up
         </button>
-        <p className="votenumber">{votes}</p>
-        <button type="button" className="votebutton">
+        <p className="votenumber">{this.state.votes}</p>
+        <button
+          type="button"
+          className="votebutton"
+          onClick={() => this.handleDecrementVote()}
+        >
           Down
         </button>
       </section>

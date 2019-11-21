@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getArticles = topic => {
   return axios.get("https://bt-nc-news.herokuapp.com/api/articles", {
-    params: { topic: topic }
+    params: { topic: topic, sort_by: "created_at", order: "asc" }
   });
 };
 
@@ -37,4 +37,21 @@ export const deleteComment = comment_id => {
   return axios.delete(
     `https://bt-nc-news.herokuapp.com/api/comments/${comment_id}`
   );
+};
+
+export const patchArticleVote = (article_id, increment) => {
+  return axios.patch(
+    `https://bt-nc-news.herokuapp.com/api/articles/${article_id}`,
+    {
+      inc_votes: increment
+    }
+  );
+};
+
+export const patchCommentVote = (comment_id, increment) => {
+  return axios
+    .patch(`https://bt-nc-news.herokuapp.com/api/comments/${comment_id}`, {
+      inc_votes: increment
+    })
+    .then(console.log);
 };
