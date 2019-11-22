@@ -271,3 +271,11 @@ body {
 .add-comment-textarea {
   resize: none;
 }
+
+.add-comment-err {
+  color: red;
+}
+.error-header {
+  text-align: center;
+  color: white;
+}

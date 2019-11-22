@@ -19,7 +19,7 @@ class SingleArticle extends React.Component {
       .getCommentsByArticleId(this.props.article_id)
       .then(({ data: { comments } }) => this.setState({ comments }))
       .catch(err => {
-        this.setState({ err: err, isLoading: false });
+        this.setState({ err: err, isLoading: true });
       });
 
     Promise.all([fetchArticleDetails, fetchCommentsByArticleId]).then(() => {

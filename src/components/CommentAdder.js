@@ -13,8 +13,9 @@ class CommentAdder extends React.Component {
     e.preventDefault();
     const { comment_body } = this.state;
     const { articleId, currentUser } = this.props;
+    console.log("COMMENT BODY ->", comment_body);
     if (comment_body === "") {
-      this.setState({ comment_body: "Please add a comment before submitting" });
+      this.setState({ comment_err: "Please add a comment before submitting" });
     } else {
       this.props.newCommentCallback({
         author: currentUser,
@@ -29,13 +30,16 @@ class CommentAdder extends React.Component {
 
   render() {
     const { comment_err } = this.state;
+    console.log(this.state.comment_err);
     return (
       //TODO: Get p tag below to render to the screen
       <section>
         <br />
 
         <form onSubmit={this.handleSubmit}>
-          {comment_err !== "" && <p>{comment_err}</p>}
+          {comment_err !== "" && (
+            <p className="add-comment-err">{comment_err}</p>
+          )}
           <label>
             Add a comment:
             <br />
@@ -46,7 +50,7 @@ class CommentAdder extends React.Component {
               cols="100"
               rows="3"
               onChange={this.handleChange}
-              required
+              // required
             ></textarea>
           </label>
           <br />

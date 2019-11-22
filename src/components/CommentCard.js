@@ -24,7 +24,7 @@ class CommentCard extends React.Component {
           commentId={comment.comment_id}
         />
         <p>Author: {comment.author}</p>
-        <p>Created At: {comment.created_at}</p>
+        <p>Created At: {new Date(comment.created_at).toString()}</p>
         <p className="comment-card-body">{comment.body}</p>
         {currentUser === comment.author ? (
           <button onClick={() => this.handleDelete(comment.comment_id)}>
