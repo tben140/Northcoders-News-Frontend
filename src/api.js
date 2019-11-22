@@ -49,9 +49,10 @@ export const patchArticleVote = (article_id, increment) => {
 };
 
 export const patchCommentVote = (comment_id, increment) => {
-  return axios
-    .patch(`https://bt-nc-news.herokuapp.com/api/comments/${comment_id}`, {
+  return axios.patch(
+    `https://bt-nc-news.herokuapp.com/api/comments/${comment_id}`,
+    {
       inc_votes: increment
-    })
-    .then(console.log);
+    }
+  );
 };

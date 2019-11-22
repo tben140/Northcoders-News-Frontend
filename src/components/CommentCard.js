@@ -11,13 +11,17 @@ class CommentCard extends React.Component {
   };
 
   render() {
-    const { comment, currentUser } = this.props;
+    const { comment, currentUser, articleId } = this.props;
 
     //TODO: Add avatar component to each comment
 
     return (
       <section className="comment-container" key={comment.comment_id}>
-        <Votebar votes={comment.votes} commentId={comment.comment_id} />
+        <Votebar
+          articleId={articleId}
+          votes={comment.votes}
+          commentId={comment.comment_id}
+        />
         <p>Author: {comment.author}</p>
         <p>Created At: {comment.created_at}</p>
         <p className="comment-card-body">{comment.body}</p>

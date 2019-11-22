@@ -31,7 +31,7 @@ class ArticleHeader extends React.Component {
     const dateStr = date.toString();
 
     return (
-      <section className="article-card-header">
+      <section>
         <section className="avatar-username-topic">
           <img
             src={this.state.avatar_url}

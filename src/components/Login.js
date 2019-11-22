@@ -22,7 +22,11 @@ class Login extends React.Component {
         Users:&nbsp;
         <select name="users">
           {username.map(user => {
-            return (
+            return user === "jessjelly" ? (
+              <option selected="selected" value={user} key={user}>
+                {user}
+              </option>
+            ) : (
               <option value={user} key={user}>
                 {user}
               </option>

@@ -6,7 +6,7 @@ class Votebar extends React.Component {
 
   handleIncrementVote = () => {
     const { articleId, commentId } = this.props;
-    if (articleId) {
+    if (articleId && commentId === undefined) {
       api.patchArticleVote(articleId, 1);
       this.setState(prevState => {
         return { votes: prevState.votes + 1 };
@@ -21,7 +21,7 @@ class Votebar extends React.Component {
 
   handleDecrementVote = () => {
     const { articleId, commentId } = this.props;
-    if (articleId) {
+    if (articleId && commentId === undefined) {
       api.patchArticleVote(articleId, -1);
       this.setState(prevState => {
         return { votes: prevState.votes - 1 };
@@ -35,7 +35,9 @@ class Votebar extends React.Component {
   };
 
   componentDidMount() {
-    const { articleId, commentId } = this.props;
+    const { articleId, commentId, votes } = this.props;
+    this.setState({ votes, commentId });
+
     if (articleId && commentId === undefined) {
       api.getArticleDetails(articleId).then(
         ({
@@ -43,20 +45,9 @@ class Votebar extends React.Component {
             article: { votes }
           }
         }) => {
-          this.setState({ votes });
+          this.setState({ votes, articleId });
         }
       );
-      // } else if (articleId && commentId) {
-      //   api.getArticleDetails(articleId).then(api.get).then(
-      //     ({
-      //       data: {
-      //         article: { votes }
-      //       }
-      //     }) => {
-      //       this.setState({ votes });
-      //     }
-      //   );
-      // }
     }
   }
 

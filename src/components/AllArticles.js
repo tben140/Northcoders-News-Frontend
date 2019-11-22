@@ -5,7 +5,7 @@ import Login from "./Login.js";
 import FilterBar from "./FilterBar.js";
 import * as api from "../api.js";
 
-//TODO: Get rid of this file once ArticlesList can display all articles
+//TODO: Get rid of this file once certain it is no longer required
 
 class AllArticles extends React.Component {
   state = { isLoading: true };
@@ -22,7 +22,6 @@ class AllArticles extends React.Component {
 
   handleSortAndOrder = (sortBy, order) => {
     //TODO: Recreate this function as util function with TDD and move to articlesList.js
-    console.log("Sortby and Order ->", sortBy, order);
     const articlesArr = this.state.articles;
     if (sortBy === "comment_count" && order === "asc") {
       articlesArr.sort((a, b) => a.comment_count - b.comment_count);
@@ -53,7 +52,6 @@ class AllArticles extends React.Component {
     return this.state.isLoading ? (
       <p>Loading...</p>
     ) : (
-      //TODO: Handle sort functionality
       <section className="all-articles-container">
         <section>
           <h2 className="topic-title">All Articles</h2>

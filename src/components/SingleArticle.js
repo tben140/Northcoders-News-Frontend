@@ -18,7 +18,6 @@ class SingleArticle extends React.Component {
       .getCommentsByArticleId(this.props.article_id)
       .then(({ data: { comments } }) => this.setState({ comments }))
       .catch(err => {
-        console.log("Error", err);
         this.setState({ err: err, isLoading: false });
       });
 
@@ -34,9 +33,8 @@ class SingleArticle extends React.Component {
     ) : (
       <>
         <section className="single-article-container">
-          <Votebar votes={article.votes} />
+          <Votebar votes={article.votes} articleId={article.article_id} />
           <ArticleHeader data={article} />
-          <p>Votes: {article.votes}</p>
           <p className="single-article-body">{article.body}</p>
         </section>
         <section className="comments-container">
@@ -48,6 +46,8 @@ class SingleArticle extends React.Component {
           {this.state.comments.map(comment => {
             return (
               <CommentCard
+                articleId={article.article_id}
+                commentId={comment.comment_id}
                 comment={comment}
                 key={comment.comment_id}
                 currentUser={this.props.currentUser}
