@@ -7,6 +7,8 @@ class CommentCard extends React.Component {
 
   handleDelete = comment_id => {
     //TODO: Get commentslist to rerender after comment deletion and notify user of comment deletion
+    console.log("Inside handleDelete", this.props);
+    this.props.deleteComment(comment_id);
     api.deleteComment(comment_id);
   };
 

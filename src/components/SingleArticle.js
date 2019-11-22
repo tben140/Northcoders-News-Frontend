@@ -31,6 +31,19 @@ class SingleArticle extends React.Component {
     console.log("Running newCommentAdd ->");
     this.setState({ newComment: comment });
   };
+
+  removeCommentFromState = comment_id => {
+    console.log("Running removeCommentFromState ->");
+    console.log("COMMENT ID", comment_id);
+    console.log("STATE", this.state);
+    this.setState({
+      comments: this.state.comments.filter(
+        comment => comment.comment_id !== comment_id
+      )
+    });
+    console.log("After setState");
+  };
+
   render() {
     console.log("THIS.STATE ->", this.state);
     const { article, err } = this.state;
@@ -55,8 +68,8 @@ class SingleArticle extends React.Component {
 
             {this.state.newComment !== undefined && (
               <CommentCard
-                // articleId={this.state.newComment.article_id}
                 comment={this.state.newComment}
+                deleteComment={this.removeCommentFromState}
               />
             )}
 
@@ -69,6 +82,7 @@ class SingleArticle extends React.Component {
                   key={comment.comment_id}
                   currentUser={this.props.currentUser}
                   newComment={this.state.newComment}
+                  deleteComment={this.removeCommentFromState}
                 />
               );
             })}
