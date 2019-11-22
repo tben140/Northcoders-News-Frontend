@@ -163,7 +163,7 @@ body {
 
 .single-article-container {
   display: grid;
-  grid-template-columns: 60px auto;
+  /* grid-template-columns: 60px auto; */
   grid-gap: 3px;
   border: 1px solid transparent;
   border-radius: 4px;
@@ -173,6 +173,7 @@ body {
   background-color: white;
 }
 .comments-container {
+  grid-column-start: 1;
   background-color: white;
   border-radius: 4px;
   margin: 10px;
@@ -223,9 +224,16 @@ body {
 .sidebar {
 }
 
+.filterbar-desktop {
+  grid-column-start: 2;
+}
+
 @media only screen and (max-width: 900px) {
   .sidebar {
     display: none;
+  }
+  .all-articles-container {
+    grid-template-columns: auto;
   }
 }
 
@@ -233,6 +241,10 @@ body {
   .top-bar-mobile {
     display: none;
   }
+  /* .single-article-container {
+    display: grid;
+    grid-template-columns: auto 400px;
+  } */
 }
 
 .btn {

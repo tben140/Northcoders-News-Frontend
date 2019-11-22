@@ -11,12 +11,17 @@ import FilterBar from "./components/FilterBar.js";
 class App extends React.Component {
   state = { currentUser: "jessjelly" };
 
+  changeUser = user => {
+    console.log("Change User ->", user);
+    this.setState({ currentUser: user });
+  };
+
   render() {
     return (
       <div className="App">
         <Header />
         <section className="top-bar-mobile">
-          <Login />
+          <Login userCallback={this.changeUser} />
           <FilterBar />
         </section>
         <Router>
