@@ -12,7 +12,6 @@ class App extends React.Component {
   state = { currentUser: "jessjelly" };
 
   changeUser = user => {
-    console.log("Change User ->", user);
     this.setState({ currentUser: user });
   };
 

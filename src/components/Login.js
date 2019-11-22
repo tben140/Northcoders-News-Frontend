@@ -17,7 +17,6 @@ class Login extends React.Component {
 
   dropdownChange = e => {
     const { userCallback } = this.props;
-    console.log("userCallback", userCallback);
     this.setState({ selectedUser: e.target.value });
     userCallback(e.target.value);
   };

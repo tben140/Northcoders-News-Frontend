@@ -16,8 +16,6 @@ class CommentAdder extends React.Component {
     if (comment_body === "") {
       this.setState({ comment_body: "Please add a comment before submitting" });
     } else {
-      //TODO: rerender when comment is posted
-      console.log("Before newCommentCallback");
       this.props.newCommentCallback({
         author: currentUser,
         votes: 0,

@@ -28,24 +28,18 @@ class SingleArticle extends React.Component {
   }
 
   newCommentAdd = comment => {
-    console.log("Running newCommentAdd ->");
     this.setState({ newComment: comment });
   };
 
   removeCommentFromState = comment_id => {
-    console.log("Running removeCommentFromState ->");
-    console.log("COMMENT ID", comment_id);
-    console.log("STATE", this.state);
     this.setState({
       comments: this.state.comments.filter(
         comment => comment.comment_id !== comment_id
       )
     });
-    console.log("After setState");
   };
 
   render() {
-    console.log("THIS.STATE ->", this.state);
     const { article, err } = this.state;
     if (err) return <Error errormsg="Invalid article ID" />;
     return this.state.isLoading ? (
