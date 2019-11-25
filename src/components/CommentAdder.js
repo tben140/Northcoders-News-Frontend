@@ -2,7 +2,7 @@ import React from "react";
 import * as api from "../api.js";
 
 class CommentAdder extends React.Component {
-  state = { comment_body: "", comment_err: "" };
+  state = { comment_body: "", comment_err: "", err: null };
 
   handleChange = e => {
     const { value } = e.target;
@@ -20,6 +20,9 @@ class CommentAdder extends React.Component {
         .postCommentToArticle(currentUser, comment_body, articleId)
         .then(({ data }) => {
           this.props.newCommentCallback(data.comment);
+        })
+        .catch(err => {
+          this.setState({ err: err });
         });
     }
   };

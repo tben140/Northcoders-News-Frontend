@@ -31,7 +31,7 @@ class Login extends React.Component {
         >
           {username.map(user => {
             return user === "jessjelly" ? (
-              <option selected="selected" value={user} key={user}>
+              <option value={user} key={user}>
                 {user}
               </option>
             ) : (

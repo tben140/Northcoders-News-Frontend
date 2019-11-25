@@ -3,12 +3,15 @@ import { Link } from "@reach/router";
 import * as api from "../api.js";
 
 class FilterBar extends React.Component {
-  state = { topics: [], isLoading: true };
+  state = { topics: [], isLoading: true, err: null };
 
   fetchAllTopics = props => {
     api
       .getAllTopics()
-      .then(({ data: topics }) => this.setState({ topics, isLoading: false }));
+      .then(({ data: topics }) => this.setState({ topics, isLoading: false }))
+      .catch(err => {
+        this.setState({ err: err, isLoading: false });
+      });
   };
 
   componentDidMount() {

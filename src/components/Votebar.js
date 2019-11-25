@@ -2,7 +2,14 @@ import React from "react";
 import * as api from "../api.js";
 
 class Votebar extends React.Component {
-  state = { votes: 0, commentId: 0, upClicked: false, downClicked: false };
+  state = {
+    votes: 0,
+    commentId: 0,
+    upClicked: false,
+    downClicked: false,
+    err: null,
+    isLoading: true
+  };
 
   handleIncrementVote = () => {
     const { articleId, commentId } = this.props;
@@ -109,15 +116,20 @@ class Votebar extends React.Component {
   fetchArticleDetails = props => {
     const { articleId } = this.props;
 
-    api.getArticleDetails(articleId).then(
-      ({
-        data: {
-          article: { votes }
+    api
+      .getArticleDetails(articleId)
+      .then(
+        ({
+          data: {
+            article: { votes }
+          }
+        }) => {
+          this.setState({ votes, articleId });
         }
-      }) => {
-        this.setState({ votes, articleId });
-      }
-    );
+      )
+      .catch(err => {
+        this.setState({ err: err, isLoading: false });
+      });
   };
 
   componentDidMount() {

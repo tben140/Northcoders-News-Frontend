@@ -1,21 +1,27 @@
 import React from "react";
 import * as api from "../api.js";
+import Error from "./Error.js";
 import { Link } from "@reach/router";
 
 class ArticleHeader extends React.Component {
-  state = {};
+  state = { err: null, isLoading: false };
 
   fetchUserData = props => {
     const { data } = props;
-    api.getUserData(data.author).then(
-      ({
-        data: {
-          user: { avatar_url }
+    api
+      .getUserData(data.author)
+      .then(
+        ({
+          data: {
+            user: { avatar_url }
+          }
+        }) => {
+          this.setState({ avatar_url: avatar_url, isLoading: false });
         }
-      }) => {
-        this.setState({ avatar_url: avatar_url });
-      }
-    );
+      )
+      .catch(err => {
+        this.setState({ err: err, isLoading: false });
+      });
   };
 
   componentDidMount() {
@@ -23,10 +29,14 @@ class ArticleHeader extends React.Component {
   }
 
   render() {
+    const { err, isLoading } = this.state;
     const { data } = this.props;
     const date = new Date(data.created_at).toString();
 
-    return (
+    if (err) return <Error errormsg="Fetch User Data failed" />;
+    return isLoading ? (
+      <p>Loading...</p>
+    ) : (
       <section>
         <section className="avatar-username-topic">
           <img
