@@ -12,7 +12,7 @@ class CommentCard extends React.Component {
   };
 
   render() {
-    const { comment, currentUser, articleId, newComment } = this.props;
+    const { comment, currentUser, articleId } = this.props;
 
     //TODO: Add avatar component to each comment
 

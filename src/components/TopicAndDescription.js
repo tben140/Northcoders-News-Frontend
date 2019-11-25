@@ -1,14 +1,19 @@
 import React from "react";
 import { Link } from "@reach/router";
 import * as api from "../api.js";
+import Login from "./Login.js";
 
 class TopicAndDescription extends React.Component {
-  state = { isLoading: true };
+  state = { topics: [], isLoading: true };
 
-  componentDidMount() {
+  fetchAllTopics = props => {
     api
       .getAllTopics()
       .then(({ data: topics }) => this.setState({ topics, isLoading: false }));
+  };
+
+  componentDidMount() {
+    this.fetchAllTopics();
   }
 
   render() {
@@ -18,10 +23,13 @@ class TopicAndDescription extends React.Component {
       <p>Loading...</p>
     ) : (
       <>
-        <nav>
+        <nav className="topic-and-description">
+          <Login />
+          <h2>Topics:</h2>
           <Link to="/">
             <button className="btn">All Articles</button>
           </Link>
+          <br />
 
           {topics.topics.map(topic => {
             return (
@@ -29,7 +37,7 @@ class TopicAndDescription extends React.Component {
                 <Link to={`/${topic.slug}`} key={topic.slug}>
                   <button className="btn">{`${topic.slug} articles`}</button>
                 </Link>
-                <p>{topic.description}</p>
+                <p className="topic-description">{topic.description}</p>
               </>
             );
           })}

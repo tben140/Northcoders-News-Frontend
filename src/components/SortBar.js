@@ -26,15 +26,15 @@ class SortBar extends React.Component {
     return (
       <section className="sort-dropdown-container">
         <label className="sort-articles-by">
-          Sort By:
+          Sort By:{" "}
           <select onChange={event => this.handleSortChange(event.target.value)}>
             <option value="created_at">Date Created</option>
             <option value="votes">Votes</option>
             <option value="comment_count">Comment Count</option>
           </select>
-        </label>
+        </label>{" "}
         <label className="sort-articles-by">
-          Order:
+          Order:{" "}
           <select
             onChange={event => this.handleOrderChange(event.target.value)}
           >

@@ -3,30 +3,31 @@ import ArticleCard from "./ArticleCard.js";
 import SortBar from "./SortBar.js";
 import Login from "./Login.js";
 import FilterBar from "./FilterBar.js";
+import TopicAndDescription from "./TopicAndDescription.js";
 import * as api from "../api.js";
 import Error from "./Error.js";
 
 class ArticlesList extends React.Component {
   state = { isLoading: true, err: null };
 
-  componentDidMount() {
+  fetchArticles = props => {
     api
-      .getArticles(this.props.slug)
+      .getArticles(props.slug)
       .then(({ data: { articles } }) =>
         this.setState({ articles, isLoading: false })
       )
       .catch(err => {
         this.setState({ err: err, isLoading: false });
       });
+  };
+
+  componentDidMount() {
+    this.fetchArticles(this.props);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.slug !== this.props.slug) {
-      api
-        .getArticles(this.props.slug)
-        .then(({ data: { articles } }) =>
-          this.setState({ articles, isLoading: false })
-        );
+      this.fetchArticles(this.props);
     }
   }
 
@@ -59,9 +60,9 @@ class ArticlesList extends React.Component {
   };
 
   render() {
-    const { err } = this.state;
+    const { err, isLoading } = this.state;
     if (err) return <Error errormsg="Not a topic" />;
-    return this.state.isLoading ? (
+    return isLoading ? (
       <p>Loading...</p>
     ) : (
       <section className="all-articles-container">
@@ -77,10 +78,11 @@ class ArticlesList extends React.Component {
             return <ArticleCard data={article} key={article.article_id} />;
           })}
         </section>
-        <aside className="sidebar">
+        <TopicAndDescription className="sidebar-desktop" />
+        {/* <aside className="sidebar">
           <Login />
           <FilterBar />
-        </aside>
+        </aside> */}
       </section>
     );
   }

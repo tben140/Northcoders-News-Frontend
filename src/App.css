@@ -1,5 +1,5 @@
 .App {
-  font-family: "Alata", sans-serif;
+  /* font-family: "Alata", sans-serif; */
 }
 
 body {
@@ -16,7 +16,7 @@ body {
 }
 
 .header-title {
-  font-family: "Odibee Sans", cursive;
+  /* font-family: "Odibee Sans", cursive; */
   margin: 0;
 }
 
@@ -24,7 +24,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  font-family: "Odibee Sans", cursive;
+  /* font-family: "Odibee Sans", cursive; */
   color: white;
   margin-top: 30px;
 }
@@ -45,7 +45,7 @@ body {
   border-radius: 4px 0px 0px 4px;
   grid-column-start: 1;
   grid-column-end: 1;
-  grid-row: 1 / span 3;
+  grid-row: 1 / -1;
   justify-items: center;
 }
 
@@ -90,7 +90,7 @@ body {
 }
 
 .date-title {
-  font-family: "Alata", sans-serif;
+  /* font-family: "Alata", sans-serif; */
   font-size: 20px;
   background-color: transparent;
   grid-column-start: 2;
@@ -144,10 +144,12 @@ body {
 }
 
 .topic-title {
-  font-family: "Odibee Sans", cursive;
+  /* font-family: "Odibee Sans", cursive; */
   text-transform: capitalize;
   text-align: left;
   color: white;
+  display: inline;
+  margin-left: 10px;
 }
 
 .article-card-body {
@@ -201,13 +203,17 @@ body {
 
 .sort-dropdown-container {
   display: inline-block;
+  float: right;
+  margin-top: 9px;
+  margin-right: 10px;
 }
 
 .sort-articles-by {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: center; */
   color: white;
+  display: inline;
 }
 
 .all-articles-container {
@@ -238,6 +244,14 @@ body {
 }
 
 @media only screen and (min-width: 901px) {
+  .App {
+    /* display: grid;
+    grid-template-columns: auto 300px; */
+  }
+  .sidebar-desktop {
+    grid-column-start: 2;
+  }
+
   .top-bar-mobile {
     display: none;
   }
@@ -254,7 +268,7 @@ body {
   margin: 5px;
   color: white;
   padding: 12px 16px;
-  font-family: "Alata", sans-serif;
+  /* font-family: "Alata", sans-serif; */
   font-size: 14px;
   cursor: pointer;
   transition-duration: 0.4s;
@@ -277,5 +291,16 @@ body {
 }
 .error-header {
   text-align: center;
+  color: white;
+}
+
+.sidebar-desktop {
+}
+
+.topic-and-description {
+  margin-top: 35px;
+}
+
+.topic-description {
   color: white;
 }

@@ -7,6 +7,7 @@ import SingleArticle from "./components/SingleArticle.js";
 import NoMatch from "./components/NoMatch.js";
 import Login from "./components/Login.js";
 import FilterBar from "./components/FilterBar.js";
+import TopicAndDescription from "./components/TopicAndDescription.js";
 
 class App extends React.Component {
   state = { currentUser: "jessjelly" };
@@ -32,6 +33,9 @@ class App extends React.Component {
           />
           <NoMatch default />
         </Router>
+        <section className="sidebar-desktop">
+          <TopicAndDescription />
+        </section>
       </div>
     );
   }

@@ -4,11 +4,42 @@ import Votebar from "./Votebar.js";
 import ArticleHeader from "./ArticleHeader.js";
 import CommentAdder from "./CommentAdder.js";
 import CommentCard from "./CommentCard.js";
-import TopicAndDescription from "./TopicAndDescription.js";
 import Error from "./Error.js";
+import FilterBar from "./FilterBar.js";
+import Login from "./Login.js";
 
 class SingleArticle extends React.Component {
-  state = { isLoading: true, err: null };
+  state = {
+    article: {},
+    comments: [],
+    newComment: undefined,
+    isLoading: true,
+    err: null
+  };
+
+  // fetchArticleDetails = props => {
+  //   api
+  //     .getArticleDetails(props.article_id)
+  //     .then(({ data: { article } }) => this.setState({ article }));
+  // };
+
+  // fetchCommentsByArticleId = props => {
+  //   api
+  //     .getCommentsByArticleId(props.article_id)
+  //     .then(({ data: { comments } }) => this.setState({ comments }))
+  //     .catch(err => {
+  //       this.setState({ err: err, isLoading: true });
+  //     });
+  // };
+
+  // componentDidMount() {
+  //   Promise.all([
+  //     this.fetchArticleDetails(this.props),
+  //     this.fetchCommentsByArticleId(this.props)
+  //   ]).then(() => {
+  //     this.setState({ isLoading: false });
+  //   });
+  // }
 
   componentDidMount() {
     const fetchArticleDetails = api
@@ -32,20 +63,24 @@ class SingleArticle extends React.Component {
   };
 
   removeCommentFromState = comment_id => {
-    this.setState({
-      comments: this.state.comments.filter(
-        comment => comment.comment_id !== comment_id
-      )
+    this.setState(currentState => {
+      return {
+        comments: currentState.comments.filter(
+          comment => comment.comment_id !== comment_id
+        )
+      };
     });
   };
 
   render() {
-    const { article, err } = this.state;
+    const { article, err, isLoading } = this.state;
     if (err) return <Error errormsg="Invalid article ID" />;
-    return this.state.isLoading ? (
+    return isLoading ? (
       <p>Loading...</p>
     ) : (
       <>
+        <Login />
+        <FilterBar />
         <section className="single-article-container">
           <section className="article-card">
             <Votebar votes={article.votes} articleId={article.article_id} />

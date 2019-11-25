@@ -3,18 +3,22 @@ import { Link } from "@reach/router";
 import * as api from "../api.js";
 
 class FilterBar extends React.Component {
-  state = { isLoading: true };
+  state = { topics: [], isLoading: true };
 
-  componentDidMount() {
+  fetchAllTopics = props => {
     api
       .getAllTopics()
       .then(({ data: topics }) => this.setState({ topics, isLoading: false }));
+  };
+
+  componentDidMount() {
+    this.fetchAllTopics();
   }
 
   render() {
-    const { topics } = this.state;
+    const { topics, isLoading } = this.state;
 
-    return this.state.isLoading ? (
+    return isLoading ? (
       <p>Loading...</p>
     ) : (
       <>

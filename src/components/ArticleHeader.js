@@ -3,17 +3,10 @@ import * as api from "../api.js";
 import { Link } from "@reach/router";
 
 class ArticleHeader extends React.Component {
-  state = {
-    avatar_url: "https://avatars2.githubusercontent.com/u/24604688?s=460&v=4",
-    username: "icellusedkars",
-    topic: "coding",
-    title: "Living in the shadow of a great man",
-    created_at: "2018-11-15 12:21:54.171+00",
-    votes: 10
-  };
+  state = {};
 
-  componentDidMount() {
-    const { data } = this.props;
+  fetchUserData = props => {
+    const { data } = props;
     api.getUserData(data.author).then(
       ({
         data: {
@@ -23,12 +16,15 @@ class ArticleHeader extends React.Component {
         this.setState({ avatar_url: avatar_url });
       }
     );
+  };
+
+  componentDidMount() {
+    this.fetchUserData(this.props);
   }
 
   render() {
     const { data } = this.props;
-    const date = new Date(data.created_at);
-    const dateStr = date.toString();
+    const date = new Date(data.created_at).toString();
 
     return (
       <section>
@@ -43,7 +39,7 @@ class ArticleHeader extends React.Component {
         </section>
         <section className="date-title">
           <Link to={`/articles/${data.article_id}`}>{data.title}</Link>
-          <p className="date-title-date">{dateStr}</p>
+          <p className="date-title-date">{date}</p>
         </section>
       </section>
     );

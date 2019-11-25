@@ -13,8 +13,6 @@ class Login extends React.Component {
     selectedUser: "jessjelly"
   };
 
-  componentDidMount() {}
-
   dropdownChange = e => {
     const { userCallback } = this.props;
     this.setState({ selectedUser: e.target.value });
@@ -24,7 +22,6 @@ class Login extends React.Component {
   render() {
     const { username } = this.state;
     return (
-      //TODO: Get the label to move with the dropdown box
       <label className="dropdown-box">
         Users:&nbsp;
         <select
