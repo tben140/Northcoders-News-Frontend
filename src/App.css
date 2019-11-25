@@ -170,9 +170,9 @@ body {
   border: 1px solid transparent;
   border-radius: 4px;
   margin: 10px;
-  background-image: linear-gradient(white, rgb(240, 240, 240));
-  box-shadow: 5px 3px 5px #545454;
-  background-color: white;
+  /* background-image: linear-gradient(white, rgb(240, 240, 240)); */
+  /* box-shadow: 5px 3px 5px #545454; */
+  /* background-color: white; */
 }
 .comments-container {
   grid-column-start: 1;
@@ -203,7 +203,7 @@ body {
 
 .sort-dropdown-container {
   display: inline-block;
-  float: right;
+  /* float: right; */
   margin-top: 9px;
   margin-right: 10px;
 }
@@ -218,10 +218,11 @@ body {
 
 .all-articles-container {
   display: grid;
-  grid-template-columns: auto 400px;
+  grid-template-columns: auto 300px;
 }
 
 .articles-list-container {
+  grid-column-start: 1;
 }
 
 .articles-list-header {
@@ -234,16 +235,42 @@ body {
   grid-column-start: 2;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 400px) {
+  .filterbar {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  .dropdown-box {
+    margin-top: 0px;
+  }
+  .sort-dropdown-container {
+    display: grid;
+    /* float: right; */
+    grid-template-columns: auto;
+    margin-top: 9px;
+    margin-right: 10px;
+  }
+  .sort-articles-by {
+    grid-column-start: 1;
+  }
+  .order-articles-by {
+    grid-column-start: 1;
+  }
+}
+
+@media only screen and (max-width: 850px) {
   .sidebar {
     display: none;
   }
   .all-articles-container {
     grid-template-columns: auto;
   }
+  .single-article-sidebar {
+    display: none;
+  }
 }
 
-@media only screen and (min-width: 901px) {
+@media only screen and (min-width: 851px) {
   .App {
     /* display: grid;
     grid-template-columns: auto 300px; */
@@ -255,10 +282,16 @@ body {
   .top-bar-mobile {
     display: none;
   }
-  /* .single-article-container {
+  .single-article-topbar {
+    display: none;
+  }
+  .all-articles-sort-filter {
+    display: none;
+  }
+  .single-article-container {
     display: grid;
-    grid-template-columns: auto 400px;
-  } */
+    grid-template-columns: auto 300px;
+  }
 }
 
 .btn {
@@ -273,6 +306,7 @@ body {
   cursor: pointer;
   transition-duration: 0.4s;
   text-transform: capitalize;
+  min-width: 140px;
 }
 
 .btn:hover {
@@ -303,4 +337,16 @@ body {
 
 .topic-description {
   color: white;
+}
+
+.comment-details {
+  grid-column-start: 2;
+}
+
+.sidebar-topic-title {
+  color: white;
+}
+
+.single-article-sidebar {
+  grid-column-start: 2;
 }

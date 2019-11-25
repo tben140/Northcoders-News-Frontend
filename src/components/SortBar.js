@@ -3,14 +3,14 @@ import React from "react";
 class SortBar extends React.Component {
   state = { selectedSort: "created_at", selectedOrder: "asc" };
 
-  handleSortChange = event => {
-    this.setState({ selectedSort: event }, () => {
+  handleSortChange = value => {
+    this.setState({ selectedSort: value }, () => {
       this.setSortandOrder();
     });
   };
 
-  handleOrderChange = event => {
-    this.setState({ selectedOrder: event }, () => {
+  handleOrderChange = value => {
+    this.setState({ selectedOrder: value }, () => {
       this.setSortandOrder();
     });
   };
@@ -22,21 +22,31 @@ class SortBar extends React.Component {
     );
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.topic !== this.props.topic) {
+      this.setState({ selectedSort: "created_at", selectedOrder: "asc" });
+    }
+  }
+
   render() {
     return (
       <section className="sort-dropdown-container">
         <label className="sort-articles-by">
           Sort By:{" "}
-          <select onChange={event => this.handleSortChange(event.target.value)}>
+          <select
+            onChange={e => this.handleSortChange(e.target.value)}
+            value={this.state.selectedSort}
+          >
             <option value="created_at">Date Created</option>
             <option value="votes">Votes</option>
             <option value="comment_count">Comment Count</option>
           </select>
         </label>{" "}
-        <label className="sort-articles-by">
+        <label className="sort-articles-by order-articles-by">
           Order:{" "}
           <select
-            onChange={event => this.handleOrderChange(event.target.value)}
+            onChange={e => this.handleOrderChange(e.target.value)}
+            value={this.state.selectedOrder}
           >
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>

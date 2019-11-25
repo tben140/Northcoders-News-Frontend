@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const getArticles = topic => {
+export const getArticles = (topic, sortBy = "created_at", order = "asc") => {
   return axios.get("https://bt-nc-news.herokuapp.com/api/articles", {
-    params: { topic: topic, sort_by: "created_at", order: "asc" }
+    params: { topic: topic, sort_by: sortBy, order: order }
   });
 };
 

@@ -4,6 +4,7 @@ import Votebar from "./Votebar.js";
 import ArticleHeader from "./ArticleHeader.js";
 import CommentAdder from "./CommentAdder.js";
 import CommentCard from "./CommentCard.js";
+import TopicAndDescription from "./TopicAndDescription.js";
 import Error from "./Error.js";
 import FilterBar from "./FilterBar.js";
 import Login from "./Login.js";
@@ -44,13 +45,16 @@ class SingleArticle extends React.Component {
   componentDidMount() {
     const fetchArticleDetails = api
       .getArticleDetails(this.props.article_id)
-      .then(({ data: { article } }) => this.setState({ article }));
+      .then(({ data: { article } }) => this.setState({ article, err: null }))
+      .catch(err => {
+        this.setState({ err: err, isLoading: false });
+      });
 
     const fetchCommentsByArticleId = api
       .getCommentsByArticleId(this.props.article_id)
-      .then(({ data: { comments } }) => this.setState({ comments }))
+      .then(({ data: { comments } }) => this.setState({ comments, err: null }))
       .catch(err => {
-        this.setState({ err: err, isLoading: true });
+        this.setState({ err: err, isLoading: false });
       });
 
     Promise.all([fetchArticleDetails, fetchCommentsByArticleId]).then(() => {
@@ -79,13 +83,20 @@ class SingleArticle extends React.Component {
       <p>Loading...</p>
     ) : (
       <>
-        <Login />
-        <FilterBar />
+        <section className="single-article-topbar">
+          <Login />
+          <FilterBar />
+        </section>
         <section className="single-article-container">
           <section className="article-card">
             <Votebar votes={article.votes} articleId={article.article_id} />
-            <ArticleHeader data={article} />
-            <p className="single-article-body">{article.body}</p>
+            <section>
+              <ArticleHeader data={article} />
+              <p className="single-article-body">{article.body}</p>
+            </section>
+          </section>
+          <section className="single-article-sidebar">
+            <TopicAndDescription />
           </section>
           <section className="comments-container">
             <CommentAdder

@@ -5,9 +5,6 @@ import Header from "./components/Header.js";
 import ArticlesList from "./components/ArticlesList.js";
 import SingleArticle from "./components/SingleArticle.js";
 import NoMatch from "./components/NoMatch.js";
-import Login from "./components/Login.js";
-import FilterBar from "./components/FilterBar.js";
-import TopicAndDescription from "./components/TopicAndDescription.js";
 
 class App extends React.Component {
   state = { currentUser: "jessjelly" };
@@ -20,10 +17,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <section className="top-bar-mobile">
+        {/* <section className="top-bar-mobile">
           <Login userCallback={this.changeUser} />
           <FilterBar />
-        </section>
+        </section> */}
         <Router>
           <ArticlesList path="/" />
           <ArticlesList path="/:slug" />
@@ -33,9 +30,9 @@ class App extends React.Component {
           />
           <NoMatch default />
         </Router>
-        <section className="sidebar-desktop">
+        {/* <section className="sidebar-desktop">
           <TopicAndDescription />
-        </section>
+        </section> */}
       </div>
     );
   }

@@ -7,48 +7,102 @@ class Votebar extends React.Component {
   handleIncrementVote = () => {
     const { articleId, commentId } = this.props;
     if (articleId && commentId === undefined) {
-      api.patchArticleVote(articleId, 1);
-      this.setState(prevState => {
-        return {
-          votes: prevState.votes + 1,
-          upClicked: true,
-          downClicked: false
-        };
-      });
-      console.log(this.state.upClicked, this.state.downClicked);
+      if (this.state.downClicked === false && this.state.upClicked === false) {
+        api.patchArticleVote(articleId, 1);
+        this.setState(currentState => {
+          return {
+            votes: currentState.votes + 1,
+            upClicked: true,
+            downClicked: false
+          };
+        });
+      } else if (
+        this.state.upClicked === false &&
+        this.state.downClicked === true
+      ) {
+        api.patchArticleVote(articleId, 2);
+        this.setState(currentState => {
+          return {
+            votes: currentState.votes + 2,
+            upClicked: true,
+            downClicked: false
+          };
+        });
+      }
     } else if (commentId) {
-      api.patchCommentVote(commentId, 1);
-      this.setState(prevState => {
-        return {
-          votes: prevState.votes + 1,
-          upClicked: true,
-          downClicked: false
-        };
-      });
+      if (this.state.downClicked === false && this.state.upClicked === false) {
+        api.patchCommentVote(commentId, 1);
+        this.setState(prevState => {
+          return {
+            votes: prevState.votes + 1,
+            upClicked: true,
+            downClicked: false
+          };
+        });
+      } else if (
+        this.state.upClicked === false &&
+        this.state.downClicked === true
+      ) {
+        api.patchCommentVote(commentId, 2);
+        this.setState(prevState => {
+          return {
+            votes: prevState.votes + 2,
+            upClicked: true,
+            downClicked: false
+          };
+        });
+      }
     }
   };
 
   handleDecrementVote = () => {
     const { articleId, commentId } = this.props;
     if (articleId && commentId === undefined) {
-      api.patchArticleVote(articleId, -1);
-      this.setState(prevState => {
-        return {
-          votes: prevState.votes - 1,
-          upClicked: false,
-          downClicked: true
-        };
-      });
-      console.log(this.state.upClicked, this.state.downClicked);
+      if (this.state.downClicked === false && this.state.upClicked === false) {
+        api.patchArticleVote(articleId, -1);
+        this.setState(prevState => {
+          return {
+            votes: prevState.votes - 1,
+            upClicked: false,
+            downClicked: true
+          };
+        });
+      } else if (
+        this.state.upClicked === true &&
+        this.state.downClicked === false
+      ) {
+        api.patchArticleVote(articleId, -2);
+        this.setState(prevState => {
+          return {
+            votes: prevState.votes - 2,
+            upClicked: false,
+            downClicked: true
+          };
+        });
+      }
     } else if (commentId) {
-      api.patchCommentVote(commentId, -1);
-      this.setState(prevState => {
-        return {
-          votes: prevState.votes - 1,
-          upClicked: false,
-          downClicked: true
-        };
-      });
+      if (this.state.downClicked === false && this.state.upClicked === false) {
+        api.patchCommentVote(commentId, -1);
+        this.setState(prevState => {
+          return {
+            votes: prevState.votes - 1,
+            upClicked: false,
+            downClicked: true
+          };
+        });
+      } else if (
+        this.state.upClicked === true &&
+        this.state.downClicked === false
+      ) {
+        api.patchCommentVote(commentId, -2);
+        this.setState(prevState => {
+          return {
+            votes: prevState.votes - 2,
+            upClicked: false,
+            downClicked: true
+          };
+        });
+      }
     }
   };
 
