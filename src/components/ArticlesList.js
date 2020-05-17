@@ -1,22 +1,22 @@
-import React from "react";
-import ArticleCard from "./ArticleCard.js";
-import SortBar from "./SortBar.js";
-import Login from "./Login.js";
-import FilterBar from "./FilterBar.js";
-import TopicAndDescription from "./TopicAndDescription.js";
-import * as api from "../api.js";
-import Error from "./Error.js";
+import React from 'react';
+import ArticleCard from './ArticleCard.js';
+import SortBar from './SortBar.js';
+import Login from './Login.js';
+import FilterBar from './FilterBar.js';
+import TopicAndDescription from './TopicAndDescription.js';
+import * as api from '../api.js';
+import Error from './Error.js';
 
 class ArticlesList extends React.Component {
   state = { isLoading: true, err: null };
 
-  fetchArticles = props => {
+  fetchArticles = (props) => {
     api
       .getArticles(props.slug)
       .then(({ data: { articles } }) =>
         this.setState({ articles, isLoading: false, err: null })
       )
-      .catch(err => {
+      .catch((err) => {
         this.setState({ err: err, isLoading: false });
       });
   };
@@ -41,7 +41,7 @@ class ArticlesList extends React.Component {
       .then(({ data }) => {
         this.setState({ articles: data.articles });
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({ err: err, isLoading: false });
       });
   };
@@ -60,7 +60,7 @@ class ArticlesList extends React.Component {
         <section className="articles-list-container">
           <section className="articles-list-header">
             <h2 className="topic-title">
-              {this.props.slug === undefined ? "All" : `${this.props.slug}`}{" "}
+              {this.props.slug === undefined ? 'All' : `${this.props.slug}`}{' '}
               Articles
             </h2>
             <SortBar
@@ -68,7 +68,7 @@ class ArticlesList extends React.Component {
               topic={this.props.slug}
             />
           </section>
-          {this.state.articles.map(article => {
+          {this.state.articles.map((article) => {
             return <ArticleCard data={article} key={article.article_id} />;
           })}
         </section>

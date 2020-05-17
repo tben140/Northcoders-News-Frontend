@@ -1,15 +1,16 @@
-import React from "react";
-import { Router } from "@reach/router";
-import "./App.css";
-import Header from "./components/Header.js";
-import ArticlesList from "./components/ArticlesList.js";
-import SingleArticle from "./components/SingleArticle.js";
-import NoMatch from "./components/NoMatch.js";
+import React from 'react';
+import { Router } from '@reach/router';
+import './App.css';
+import Header from './components/Header.js';
+import ArticlesList from './components/ArticlesList.js';
+// import SingleArticle from "./components/SingleArticle.js";
+import SingleArticleWithFlexbox from './components/SingleArticleWithFlexbox.js';
+import NoMatch from './components/NoMatch.js';
 
 class App extends React.Component {
-  state = { currentUser: "jessjelly" };
+  state = { currentUser: 'jessjelly' };
 
-  changeUser = user => {
+  changeUser = (user) => {
     this.setState({ currentUser: user });
   };
 
@@ -24,7 +25,7 @@ class App extends React.Component {
         <Router>
           <ArticlesList path="/" />
           <ArticlesList path="/:slug" />
-          <SingleArticle
+          <SingleArticleWithFlexbox
             path="/articles/:article_id"
             currentUser={this.state.currentUser}
           />

@@ -1,11 +1,11 @@
-import React from "react";
-import Votebar from "./Votebar.js";
-import * as api from "../api.js";
+import React from 'react';
+import Votebar from './Votebar.js';
+import * as api from '../api.js';
 
 class CommentCard extends React.Component {
   state = {};
 
-  handleDelete = comment_id => {
+  handleDelete = (comment_id) => {
     this.props.deleteComment(comment_id);
     api.deleteComment(comment_id);
   };
@@ -21,11 +21,14 @@ class CommentCard extends React.Component {
           commentId={comment.comment_id}
         />
         <section className="comment-details">
-          <p>Author: {comment.author}</p>
-          <p>Created At: {new Date(comment.created_at).toString()}</p>
+          <p className="comment-author">Author: {comment.author}</p>
+          <p>Date Created: {new Date(comment.created_at).toDateString()}</p>
           <p className="comment-card-body">{comment.body}</p>
           {currentUser === comment.author ? (
-            <button onClick={() => this.handleDelete(comment.comment_id)}>
+            <button
+              className="btn"
+              onClick={() => this.handleDelete(comment.comment_id)}
+            >
               Delete Comment
             </button>
           ) : (

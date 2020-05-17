@@ -1,18 +1,18 @@
-import React from "react";
-import { Link } from "@reach/router";
-import * as api from "../api.js";
-import Login from "./Login.js";
+import React from 'react';
+import { Link } from '@reach/router';
+import * as api from '../api.js';
+import Login from './Login.js';
 
 class TopicAndDescription extends React.Component {
   state = { topics: [], isLoading: true, err: null };
 
-  fetchAllTopics = props => {
+  fetchAllTopics = (props) => {
     api
       .getAllTopics()
       .then(({ data: topics }) =>
         this.setState({ topics, isLoading: false, err: null })
       )
-      .catch(err => this.setState({ err: err, isLoading: false }));
+      .catch((err) => this.setState({ err: err, isLoading: false }));
   };
 
   componentDidMount() {
@@ -27,25 +27,31 @@ class TopicAndDescription extends React.Component {
     ) : (
       <>
         <nav className="topic-and-description">
-          <Login />
-          <h2 className="sidebar-topic-title">Topics:</h2>
-          <Link to="/">
-            <button className="btn">All Articles</button>
-          </Link>
-          <br />
+          <div className="testdiv">
+            <h2 className="sidebar-topic-title">User</h2>
+            <Login />
+            <br />
+          </div>
+          <div className="testdiv">
+            <h2 className="sidebar-topic-title">Topics</h2>
+            <Link to="/">
+              <button className="btn">All Articles</button>
+            </Link>
+            <p className="topic-description">A list of all articles</p>
+            {/* <br /> */}
 
-          {topics.topics.map(topic => {
-            return (
-              <>
-                <Link to={`/${topic.slug}`} key={topic.slug}>
-                  <button className="btn">{`${topic.slug} articles`}</button>
-                </Link>
-                <p className="topic-description">{topic.description}</p>
-              </>
-            );
-          })}
+            {topics.topics.map((topic) => {
+              return (
+                <>
+                  <Link to={`/${topic.slug}`} key={topic.slug}>
+                    <button className="btn">{`${topic.slug} articles`}</button>
+                  </Link>
+                  <p className="topic-description">{topic.description}</p>
+                </>
+              );
+            })}
+          </div>
         </nav>
-        <br />
       </>
     );
   }

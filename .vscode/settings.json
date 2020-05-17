@@ -20,5 +20,8 @@
       "server": "localhost",
       "username": "bentaylor"
     }
-  ]
+  ],
+  "workbench.colorCustomizations": {
+    "tab.unfocusedActiveBorder": "#fff0"
+  }
 }

@@ -1,13 +1,13 @@
-import React from "react";
-import * as api from "../api.js";
-import Votebar from "./Votebar.js";
-import ArticleHeader from "./ArticleHeader.js";
-import CommentAdder from "./CommentAdder.js";
-import CommentCard from "./CommentCard.js";
-import TopicAndDescription from "./TopicAndDescription.js";
-import Error from "./Error.js";
-import FilterBar from "./FilterBar.js";
-import Login from "./Login.js";
+import React from 'react';
+import * as api from '../api.js';
+import Votebar from './Votebar.js';
+import ArticleHeader from './ArticleHeader.js';
+import CommentAdder from './CommentAdder.js';
+import CommentCard from './CommentCard.js';
+import TopicAndDescription from './TopicAndDescription.js';
+import Error from './Error.js';
+import FilterBar from './FilterBar.js';
+import Login from './Login.js';
 
 class SingleArticle extends React.Component {
   state = {
@@ -15,7 +15,7 @@ class SingleArticle extends React.Component {
     comments: [],
     newComment: undefined,
     isLoading: true,
-    err: null
+    err: null,
   };
 
   // fetchArticleDetails = props => {
@@ -46,14 +46,14 @@ class SingleArticle extends React.Component {
     const fetchArticleDetails = api
       .getArticleDetails(this.props.article_id)
       .then(({ data: { article } }) => this.setState({ article, err: null }))
-      .catch(err => {
+      .catch((err) => {
         this.setState({ err: err, isLoading: false });
       });
 
     const fetchCommentsByArticleId = api
       .getCommentsByArticleId(this.props.article_id)
       .then(({ data: { comments } }) => this.setState({ comments, err: null }))
-      .catch(err => {
+      .catch((err) => {
         this.setState({ err: err, isLoading: false });
       });
 
@@ -62,16 +62,16 @@ class SingleArticle extends React.Component {
     });
   }
 
-  newCommentAdd = comment => {
+  newCommentAdd = (comment) => {
     this.setState({ newComment: comment });
   };
 
-  removeCommentFromState = comment_id => {
-    this.setState(currentState => {
+  removeCommentFromState = (comment_id) => {
+    this.setState((currentState) => {
       return {
         comments: currentState.comments.filter(
-          comment => comment.comment_id !== comment_id
-        )
+          (comment) => comment.comment_id !== comment_id
+        ),
       };
     });
   };
@@ -90,7 +90,7 @@ class SingleArticle extends React.Component {
         <section className="single-article-container">
           <section className="article-card">
             <Votebar votes={article.votes} articleId={article.article_id} />
-            <section>
+            <section className="article-header-and-body">
               <ArticleHeader data={article} />
               <p className="single-article-body">{article.body}</p>
             </section>
@@ -104,7 +104,7 @@ class SingleArticle extends React.Component {
               currentUser={this.props.currentUser}
               newCommentCallback={this.newCommentAdd}
             />
-            <h3>{article.comment_count} comments:</h3>
+            <h3 className="comment-count">{article.comment_count} comments:</h3>
 
             {this.state.newComment !== undefined && (
               <CommentCard
@@ -113,7 +113,7 @@ class SingleArticle extends React.Component {
               />
             )}
 
-            {this.state.comments.map(comment => {
+            {this.state.comments.map((comment) => {
               return (
                 <CommentCard
                   articleId={article.article_id}
