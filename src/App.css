@@ -24,7 +24,6 @@
   border-radius: 4px;
   margin: 10px;
   background-image: linear-gradient(white, rgb(240, 240, 240));
-  /* box-shadow: 5px 3px 5px #545454; */
 }
 
 .article-card-body {
@@ -64,9 +63,6 @@
   grid-column-start: 1;
 }
 
-.articles-list-header {
-}
-
 .avatar-img {
   float: left;
   border: 1px solid;
@@ -80,8 +76,6 @@
 .avatar-username-topic {
   margin: 5px;
   background-color: transparent;
-  /* grid-column-start: 2;
-  grid-column-end: 2; */
 }
 
 body {
@@ -214,6 +208,7 @@ body {
 .testdiv {
   background-color: white;
   border-radius: 4px;
+  /* margin: 0; */
 }
 
 .topic-description {
@@ -223,7 +218,7 @@ body {
 }
 
 .topic-and-description {
-  margin-top: 35px;
+  /* margin-top: 21px; */
 }
 
 .topic-title {
@@ -277,6 +272,7 @@ body {
   /* color: white; */
   font-family: 'Bungee Shade', cursive;
   text-align: center;
+  margin: 0px;
 }
 .single-article-sidebar {
   grid-column-start: 2;
