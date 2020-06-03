@@ -27,12 +27,12 @@ class TopicAndDescription extends React.Component {
     ) : (
       <>
         <nav className="topic-and-description">
-          <div className="testdiv">
+          <div className="user-sidebar">
             <h2 className="sidebar-topic-title">User</h2>
             <Login />
             <br />
           </div>
-          <div className="testdiv">
+          <div className="topic-container">
             <h2 className="sidebar-topic-title">Topics</h2>
             <Link to="/">
               <button className="btn">All Articles</button>

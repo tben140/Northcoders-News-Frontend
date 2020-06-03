@@ -4,14 +4,14 @@
 }
 
 .App {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .App-header {
   text-align: center;
   background-color: DodgerBlue;
   top: 0;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .article-card {
@@ -20,7 +20,7 @@
   grid-template-rows: auto auto;
   grid-gap: 3px;
   align-content: start;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 4px;
   margin: 10px;
   background-image: linear-gradient(white, rgb(240, 240, 240));
@@ -32,6 +32,7 @@
 }
 
 .article-card-header-topic {
+  height: 14px;
   background-color: transparent;
   font-weight: bold;
   font-size: 11px;
@@ -39,6 +40,7 @@
 }
 
 .article-card-header-username {
+  height: 14px;
   background-color: transparent;
   font-size: 11px;
   font-weight: bold;
@@ -46,6 +48,8 @@
 }
 
 .article-footer {
+  min-height: 39px;
+  margin: 5px;
   background-color: transparent;
   grid-column-start: 2;
   grid-column-end: 2;
@@ -61,6 +65,10 @@
 
 .articles-list-container {
   grid-column-start: 1;
+}
+
+.articles-list-header {
+  min-height: 30px;
 }
 
 .avatar-img {
@@ -86,7 +94,7 @@ body {
   background-color: dodgerblue;
   border: none;
   border-radius: 4px;
-  /* margin-left: 5px; */
+  margin-left: 5px;
   margin-right: 5px;
   color: white;
   padding: 12px 16px;
@@ -134,6 +142,8 @@ body {
 
 .date-title {
   /* font-family: "Alata", sans-serif; */
+  min-height: 37px;
+  margin: 5px;
   font-size: 18px;
   background-color: transparent;
   /* grid-column-start: 2;
@@ -167,12 +177,14 @@ body {
 }
 
 .header-title {
-  font-family: 'Bungee Shade', cursive;
+  font-family: 'Audiowide', cursive;
+  font-size: 30px;
   color: white;
   margin: 0;
 }
 
 .single-article-body {
+  margin: 0 5px;
   grid-column-start: 2;
   grid-column-end: 2;
   line-height: 1.5em;
@@ -215,14 +227,16 @@ body {
   /* color: white; */
   font-size: 12px;
   margin-left: 5px;
+  margin-bottom: 0px;
+  padding-bottom: 10px;
 }
 
 .topic-and-description {
-  /* margin-top: 21px; */
+  margin-top: 40px;
 }
 
 .topic-title {
-  font-family: 'Bungee Shade', cursive;
+  font-family: 'Audiowide', cursive;
   text-transform: capitalize;
   text-align: left;
   color: white;
@@ -259,6 +273,7 @@ body {
 }
 
 .comment-count {
+  font-family: 'Audiowide', cursive;
   margin: 5px;
 }
 
@@ -270,12 +285,30 @@ body {
 
 .sidebar-topic-title {
   /* color: white; */
-  font-family: 'Bungee Shade', cursive;
+  font-family: 'Audiowide', cursive;
   text-align: center;
   margin: 0px;
+  margin-bottom: 10px;
 }
 .single-article-sidebar {
   grid-column-start: 2;
+}
+
+.topic-container {
+  /* background-color: white; */
+  background-image: linear-gradient(white, rgb(240, 240, 240));
+  border-radius: 4px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.user-sidebar {
+  /* margin-bottom: 10px; */
+  margin-right: 10px;
+  height: 145px;
+  /* background-color: white; */
+  background-image: linear-gradient(white, rgb(240, 240, 240));
+  border-radius: 4px;
 }
 
 .votebar {
@@ -289,11 +322,23 @@ body {
 
 .votebar button {
   display: block;
+  /* padding: 0 auto; */
   margin: 0 auto;
+  margin-top: 5px;
+  width: 90%;
+  height: 35px;
+}
+
+.votebar button:hover {
+  display: block;
+  /* padding: 0 auto; */
+  margin: 0 auto;
+  margin-top: 5px;
 }
 
 .votebutton {
   margin: auto;
+  margin-top: 5px;
   background-color: DodgerBlue;
   border: none;
   border-radius: 4px;
@@ -306,6 +351,7 @@ body {
 
 .votebutton:hover {
   margin: auto;
+  margin-top: 5px;
   background-color: white;
   border: none;
   border-radius: 4px;
@@ -319,6 +365,7 @@ body {
 
 .votenumber {
   text-align: center;
+  font-family: 'Audiowide', cursive;
   font-size: 20px;
 }
 
