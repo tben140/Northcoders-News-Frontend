@@ -45,7 +45,7 @@ class CommentAdder extends React.Component {
               name="Text1"
               placeholder="Add a comment..."
               className="add-comment-textarea"
-              cols="100"
+              // cols="100"
               rows="3"
               onChange={this.handleChange}
               // required

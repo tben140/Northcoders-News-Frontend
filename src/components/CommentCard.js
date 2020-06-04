@@ -22,11 +22,13 @@ class CommentCard extends React.Component {
         />
         <section className="comment-details">
           <p className="comment-author">Author: {comment.author}</p>
-          <p>Date Created: {new Date(comment.created_at).toDateString()}</p>
+          <p className="comment-date">
+            Date Created: {new Date(comment.created_at).toDateString()}
+          </p>
           <p className="comment-card-body">{comment.body}</p>
           {currentUser === comment.author ? (
             <button
-              className="btn"
+              className="delete-btn"
               onClick={() => this.handleDelete(comment.comment_id)}
             >
               Delete Comment

@@ -4,7 +4,6 @@ import Votebar from './Votebar.js';
 import ArticleHeader from './ArticleHeader.js';
 import CommentAdder from './CommentAdder.js';
 import CommentCard from './CommentCard.js';
-import TopicAndDescription from './TopicAndDescription.js';
 import Error from './Error.js';
 import FilterBar from './FilterBar.js';
 import Login from './Login.js';
@@ -102,11 +101,6 @@ class SingleArticleWithFlexbox extends React.Component {
                   />
                 );
               })}
-            </section>
-          </section>
-          <section className="single-article-topics-flexbox-container">
-            <section className="single-article-sidebar">
-              <TopicAndDescription />
             </section>
           </section>
         </section>
