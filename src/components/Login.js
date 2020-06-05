@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 
 class Login extends React.Component {
   state = {
     username: [
-      "tickle122",
-      "grumpy19",
-      "happyamy2016",
-      "cooljmessy",
-      "weegembump",
-      "jessjelly"
+      'tickle122',
+      'grumpy19',
+      'happyamy2016',
+      'cooljmessy',
+      'weegembump',
+      'jessjelly',
     ],
-    selectedUser: "jessjelly"
+    selectedUser: 'jessjelly',
   };
 
-  dropdownChange = e => {
+  dropdownChange = (e) => {
     const { userCallback } = this.props;
     this.setState({ selectedUser: e.target.value });
     userCallback(e.target.value);
@@ -28,9 +28,10 @@ class Login extends React.Component {
           name="users"
           onChange={this.dropdownChange}
           value={this.state.selectedUser}
+          className="dropdown"
         >
-          {username.map(user => {
-            return user === "jessjelly" ? (
+          {username.map((user) => {
+            return user === 'jessjelly' ? (
               <option value={user} key={user}>
                 {user}
               </option>
