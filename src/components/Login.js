@@ -3,12 +3,12 @@ import React from 'react';
 class Login extends React.Component {
   state = {
     username: [
+      'jessjelly',
       'tickle122',
       'grumpy19',
       'happyamy2016',
       'cooljmessy',
       'weegembump',
-      'jessjelly',
     ],
     selectedUser: 'jessjelly',
   };

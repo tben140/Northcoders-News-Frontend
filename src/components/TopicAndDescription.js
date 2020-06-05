@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from '@reach/router';
-import * as api from '../api.js';
+
 import Login from './Login.js';
+
+import * as api from '../api.js';
 
 class TopicAndDescription extends React.Component {
   state = { topics: [], isLoading: true, err: null };
@@ -38,7 +40,6 @@ class TopicAndDescription extends React.Component {
               <button className="btn">All Articles</button>
             </Link>
             <p className="topic-description">A list of all articles</p>
-            {/* <br /> */}
 
             {topics.topics.map((topic) => {
               return (

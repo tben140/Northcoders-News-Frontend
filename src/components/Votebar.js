@@ -1,5 +1,6 @@
-import React from "react";
-import * as api from "../api.js";
+import React from 'react';
+
+import * as api from '../api.js';
 
 class Votebar extends React.Component {
   state = {
@@ -8,7 +9,7 @@ class Votebar extends React.Component {
     upClicked: false,
     downClicked: false,
     err: null,
-    isLoading: true
+    isLoading: true,
   };
 
   handleIncrementVote = () => {
@@ -16,11 +17,11 @@ class Votebar extends React.Component {
     if (articleId && commentId === undefined) {
       if (this.state.downClicked === false && this.state.upClicked === false) {
         api.patchArticleVote(articleId, 1);
-        this.setState(currentState => {
+        this.setState((currentState) => {
           return {
             votes: currentState.votes + 1,
             upClicked: true,
-            downClicked: false
+            downClicked: false,
           };
         });
       } else if (
@@ -28,22 +29,22 @@ class Votebar extends React.Component {
         this.state.downClicked === true
       ) {
         api.patchArticleVote(articleId, 2);
-        this.setState(currentState => {
+        this.setState((currentState) => {
           return {
             votes: currentState.votes + 2,
             upClicked: true,
-            downClicked: false
+            downClicked: false,
           };
         });
       }
     } else if (commentId) {
       if (this.state.downClicked === false && this.state.upClicked === false) {
         api.patchCommentVote(commentId, 1);
-        this.setState(prevState => {
+        this.setState((prevState) => {
           return {
             votes: prevState.votes + 1,
             upClicked: true,
-            downClicked: false
+            downClicked: false,
           };
         });
       } else if (
@@ -51,11 +52,11 @@ class Votebar extends React.Component {
         this.state.downClicked === true
       ) {
         api.patchCommentVote(commentId, 2);
-        this.setState(prevState => {
+        this.setState((prevState) => {
           return {
             votes: prevState.votes + 2,
             upClicked: true,
-            downClicked: false
+            downClicked: false,
           };
         });
       }
@@ -67,11 +68,11 @@ class Votebar extends React.Component {
     if (articleId && commentId === undefined) {
       if (this.state.downClicked === false && this.state.upClicked === false) {
         api.patchArticleVote(articleId, -1);
-        this.setState(prevState => {
+        this.setState((prevState) => {
           return {
             votes: prevState.votes - 1,
             upClicked: false,
-            downClicked: true
+            downClicked: true,
           };
         });
       } else if (
@@ -79,22 +80,22 @@ class Votebar extends React.Component {
         this.state.downClicked === false
       ) {
         api.patchArticleVote(articleId, -2);
-        this.setState(prevState => {
+        this.setState((prevState) => {
           return {
             votes: prevState.votes - 2,
             upClicked: false,
-            downClicked: true
+            downClicked: true,
           };
         });
       }
     } else if (commentId) {
       if (this.state.downClicked === false && this.state.upClicked === false) {
         api.patchCommentVote(commentId, -1);
-        this.setState(prevState => {
+        this.setState((prevState) => {
           return {
             votes: prevState.votes - 1,
             upClicked: false,
-            downClicked: true
+            downClicked: true,
           };
         });
       } else if (
@@ -102,18 +103,18 @@ class Votebar extends React.Component {
         this.state.downClicked === false
       ) {
         api.patchCommentVote(commentId, -2);
-        this.setState(prevState => {
+        this.setState((prevState) => {
           return {
             votes: prevState.votes - 2,
             upClicked: false,
-            downClicked: true
+            downClicked: true,
           };
         });
       }
     }
   };
 
-  fetchArticleDetails = props => {
+  fetchArticleDetails = (props) => {
     const { articleId } = this.props;
 
     api
@@ -121,13 +122,13 @@ class Votebar extends React.Component {
       .then(
         ({
           data: {
-            article: { votes }
-          }
+            article: { votes },
+          },
         }) => {
           this.setState({ votes, articleId });
         }
       )
-      .catch(err => {
+      .catch((err) => {
         this.setState({ err: err, isLoading: false });
       });
   };

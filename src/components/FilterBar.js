@@ -1,15 +1,16 @@
-import React from "react";
-import { Link } from "@reach/router";
-import * as api from "../api.js";
+import React from 'react';
+import { Link } from '@reach/router';
+
+import * as api from '../api.js';
 
 class FilterBar extends React.Component {
   state = { topics: [], isLoading: true, err: null };
 
-  fetchAllTopics = props => {
+  fetchAllTopics = (props) => {
     api
       .getAllTopics()
       .then(({ data: topics }) => this.setState({ topics, isLoading: false }))
-      .catch(err => {
+      .catch((err) => {
         this.setState({ err: err, isLoading: false });
       });
   };
@@ -30,7 +31,7 @@ class FilterBar extends React.Component {
             <button className="btn">All Articles</button>
           </Link>
 
-          {topics.topics.map(topic => {
+          {topics.topics.map((topic) => {
             return (
               <Link to={`/${topic.slug}`} key={topic.slug}>
                 <button className="btn">{`${topic.slug} articles`}</button>

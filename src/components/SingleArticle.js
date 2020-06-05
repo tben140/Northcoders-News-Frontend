@@ -1,14 +1,16 @@
 import React from 'react';
-import * as api from '../api.js';
-import Votebar from './Votebar.js';
+
 import ArticleHeader from './ArticleHeader.js';
 import CommentAdder from './CommentAdder.js';
 import CommentCard from './CommentCard.js';
 import Error from './Error.js';
 import FilterBar from './FilterBar.js';
 import Login from './Login.js';
+import Votebar from './Votebar.js';
 
-class SingleArticleWithFlexbox extends React.Component {
+import * as api from '../api.js';
+
+class SingleArticle extends React.Component {
   state = {
     article: {},
     comments: [],
@@ -109,4 +111,4 @@ class SingleArticleWithFlexbox extends React.Component {
   }
 }
 
-export default SingleArticleWithFlexbox;
+export default SingleArticle;

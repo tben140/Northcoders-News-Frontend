@@ -1,9 +1,10 @@
-import React from "react";
-import Votebar from "./Votebar.js";
-import ArticleHeader from "./ArticleHeader.js";
-import ArticleFooter from "./ArticleFooter.js";
+import React from 'react';
 
-const ArticleCard = props => {
+import ArticleFooter from './ArticleFooter.js';
+import ArticleHeader from './ArticleHeader.js';
+import Votebar from './Votebar.js';
+
+const ArticleCard = (props) => {
   const { data } = props;
   return (
     <section className="article-card">

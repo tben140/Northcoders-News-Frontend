@@ -1,11 +1,13 @@
 import React from 'react';
+
 import ArticleCard from './ArticleCard.js';
-import SortBar from './SortBar.js';
-import Login from './Login.js';
-import FilterBar from './FilterBar.js';
-import TopicAndDescription from './TopicAndDescription.js';
-import * as api from '../api.js';
 import Error from './Error.js';
+import FilterBar from './FilterBar.js';
+import Login from './Login.js';
+import SortBar from './SortBar.js';
+import TopicAndDescription from './TopicAndDescription.js';
+
+import * as api from '../api.js';
 
 class ArticlesList extends React.Component {
   state = { isLoading: true, err: null };

@@ -1,7 +1,9 @@
 import React from 'react';
-import * as api from '../api.js';
-import Error from './Error.js';
 import { Link } from '@reach/router';
+
+import Error from './Error.js';
+
+import * as api from '../api.js';
 
 class ArticleHeader extends React.Component {
   state = { err: null, isLoading: false };

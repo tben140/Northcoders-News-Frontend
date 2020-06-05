@@ -1,4 +1,5 @@
 import React from 'react';
+
 import * as api from '../api.js';
 
 class CommentAdder extends React.Component {
@@ -31,7 +32,6 @@ class CommentAdder extends React.Component {
     const { comment_err } = this.state;
     return (
       <section>
-        {/* <br /> */}
         <form onSubmit={this.handleSubmit}>
           {comment_err !== '' ? (
             <p className="add-comment-err">{comment_err}</p>
@@ -45,10 +45,8 @@ class CommentAdder extends React.Component {
               name="Text1"
               placeholder="Add a comment..."
               className="add-comment-textarea"
-              // cols="100"
               rows="3"
               onChange={this.handleChange}
-              // required
             ></textarea>
           </label>
           <br />

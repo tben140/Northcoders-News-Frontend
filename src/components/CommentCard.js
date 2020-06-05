@@ -1,5 +1,7 @@
 import React from 'react';
+
 import Votebar from './Votebar.js';
+
 import * as api from '../api.js';
 
 class CommentCard extends React.Component {
