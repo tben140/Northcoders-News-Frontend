@@ -6,6 +6,7 @@
 }
 .add-comment-textarea {
   margin: 5px;
+  font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   width: calc(100% - 15px);
   resize: none;
@@ -68,16 +69,19 @@
   grid-column-start: 2;
   grid-column-end: 2;
   margin: 5px;
-  min-height: 39px;
+  /* min-height: 39px; */
   background-color: transparent;
 }
 
 .article-footer-comments {
   font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .article-header-and-body {
   background-image: linear-gradient(white, rgb(240, 240, 240));
+  border-radius: 4px;
 }
 
 .articles-list-container {
@@ -318,12 +322,12 @@ body {
 .user-sidebar {
   margin-right: 10px;
   border-radius: 4px;
-  height: 151px;
+  height: 150px;
   background-image: linear-gradient(white, rgb(240, 240, 240));
 }
 
 .votebar {
-  grid-row: 1 / -1;
+  grid-row: 1 / 4;
   grid-column-start: 1;
   grid-column-end: 1;
   background-color: rgb(238, 238, 238);

@@ -39,7 +39,7 @@ class ArticleHeader extends React.Component {
     return isLoading ? (
       <p>Loading...</p>
     ) : (
-      <section>
+      <>
         <section className="avatar-username-topic">
           <img
             src={this.state.avatar_url}
@@ -53,7 +53,7 @@ class ArticleHeader extends React.Component {
           <Link to={`/articles/${data.article_id}`}>{data.title}</Link>
           <p className="date-title-date">{date}</p>
         </section>
-      </section>
+      </>
     );
   }
 }
